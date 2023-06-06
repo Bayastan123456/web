@@ -1,13 +1,44 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setEmail, setPassword } from "../store/auth/authSlice";
 
 const Login = () => {
+  const { email, password, emailError, passwordError } = useSelector(
+    (state) => state.auth
+  );
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleUser = () => {
+    const obj = {
+      email,
+      password,
+      navigate,
+    };
+    // dispatch(handleLogin(obj));
+  };
+
   return (
     <div>
-      <input type="text" placeholder="email" />
+      {emailError || passwordError}
       <br />
-      <input type="password" placeholder="password" />
+      <input
+        type="text"
+        placeholder="email"
+        value={email}
+        onChange={(e) => dispatch(setEmail(e.target.value))}
+      />
       <br />
-      <button>Login</button>
+      <input
+        type="password"
+        placeholder="password"
+        value={password}
+        onChange={(e) => dispatch(setPassword(e.target.value))}
+      />
+      <br />
+      <button onClick={handleUser}>Login</button>
     </div>
   );
 };
