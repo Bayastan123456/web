@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { handleLogin } from "../store/auth/authActions";
 import { setEmail, setPassword } from "../store/auth/authSlice";
 
 const Login = () => {
@@ -17,7 +18,8 @@ const Login = () => {
       password,
       navigate,
     };
-    // dispatch(handleLogin(obj));
+    dispatch(handleLogin(obj));
+    console.log(obj);
   };
 
   return (
