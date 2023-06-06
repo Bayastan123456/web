@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authListener, handleLogout } from "../store/auth/authAction";
+import { authListener, handleLogout } from "../store/auth/authActions";
 
 const Home = () => {
   const dispatch = useDispatch();
