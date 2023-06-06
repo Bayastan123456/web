@@ -14,16 +14,17 @@ const Home = () => {
 
   return (
     <div>
-      <br />
+      Home
+      <hr />
       {user ? (
         <div>
-          <h2>Welcome {user}</h2>
+          <h3>Welcome {user}</h3>
           <button onClick={() => dispatch(handleLogout(navigate))}>
-            LogOut
+            Logout
           </button>
         </div>
       ) : (
-        <button onClick={() => navigate("/login")}>LogIn</button>
+        <button onClick={() => navigate("/login")}>Login</button>
       )}
     </div>
   );

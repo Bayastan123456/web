@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { handleSignup } from "../store/auth/authActions";
 import { setEmail, setPassword } from "../store/auth/authSlice";
-import { handleSignup } from "../store/auth/authAction";
 
 const Register = () => {
   const { email, password, emailError, passwordError } = useSelector(
@@ -18,7 +18,6 @@ const Register = () => {
       password,
       navigate,
     };
-
     dispatch(handleSignup(obj));
   };
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { handleLogin } from "../store/auth/authActions";
 import { setEmail, setPassword } from "../store/auth/authSlice";
-import { handleLogin } from "../store/auth/authAction";
 
-const Register = () => {
+const Login = () => {
   const { email, password, emailError, passwordError } = useSelector(
     (state) => state.auth
   );
@@ -19,6 +19,7 @@ const Register = () => {
       navigate,
     };
     dispatch(handleLogin(obj));
+    console.log(obj);
   };
 
   return (
@@ -39,9 +40,9 @@ const Register = () => {
         onChange={(e) => dispatch(setPassword(e.target.value))}
       />
       <br />
-      <button onClick={handleUser}>LogIn</button>
+      <button onClick={handleUser}>Login</button>
     </div>
   );
 };
 
-export default Register;
+export default Login;
