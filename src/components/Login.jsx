@@ -1,9 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setEmail, setPassword } from "../store/auth/authSlice";
 import { handleLogin } from "../store/auth/authActions";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { setEmail, setPassword } from "../store/auth/authSlice";
 
 const Login = () => {
   const { email, password, emailError, passwordError } = useSelector(
@@ -13,13 +12,14 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleUser() {
+  const handleUser = () => {
     const obj = {
       email,
       password,
       navigate,
     };
     dispatch(handleLogin(obj));
+    console.log(obj);
   }
 
   return (
@@ -40,14 +40,10 @@ const Login = () => {
         onChange={(e) => dispatch(setPassword(e.target.value))}
       />
       <br />
-      <button onClick={() => handleUser()}>Login</button>
+      <button onClick={handleUser}>Login</button>
     </div>
   );
 };
 
 export default Login;
 
-export const authListener = createAsyncThunk(
-  "@auth/authListener",
-  async (_, { dispatch }) => {}
-);

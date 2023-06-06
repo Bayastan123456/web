@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import fire from "../../fire";
 import {
   clearErrors,
   clearInputs,
@@ -6,16 +7,17 @@ import {
   setPasswordError,
   setUser,
 } from "./authSlice";
-import fire from "../../fire";
 
 export const handleSignup = createAsyncThunk(
-  "@auth/handleSignUp",
+  "@auth/handleSignup",
   async (obj, { dispatch }) => {
     dispatch(clearErrors());
     await fire
       .auth()
       .createUserWithEmailAndPassword(obj.email, obj.password)
-      .then(() => obj.navigate("/login"))
+      .then(() => {
+        obj.navigate("/login");
+      })
       .catch((err) => {
         switch (err.code) {
           case "auth/email-already-in-use":
@@ -42,7 +44,7 @@ export const handleLogin = createAsyncThunk(
       })
       .catch((err) => {
         switch (err.code) {
-          case "auth/user-disavled":
+          case "auth/user-disabled":
           case "auth/invalid-email":
           case "auth/user-not-found":
             dispatch(setEmailError(err.message));
@@ -60,8 +62,8 @@ export const authListener = createAsyncThunk(
   async (_, { dispatch }) => {
     await fire.auth().onAuthStateChanged((user) => {
       if (user) {
-        dispatch(setUser(user?.email));
         dispatch(clearInputs());
+        dispatch(setUser(user?.email));
       } else {
         dispatch(setUser(""));
       }
