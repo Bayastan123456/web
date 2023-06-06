@@ -5,6 +5,7 @@ import {
   clearInputs,
   setEmailError,
   setPasswordError,
+  setUser,
 } from "./authSlice";
 
 export const handleSignup = createAsyncThunk(
@@ -40,11 +41,10 @@ export const handleLogin = createAsyncThunk(
       .signInWithEmailAndPassword(obj.email, obj.password)
       .then(() => {
         obj.navigate("/");
-        dispatch(clearInputs());
       })
       .catch((err) => {
         switch (err.code) {
-          case "auth/user-disavled":
+          case "auth/user-disabled":
           case "auth/invalid-email":
           case "auth/user-not-found":
             dispatch(setEmailError("Вы не достойны!"));
@@ -54,5 +54,27 @@ export const handleLogin = createAsyncThunk(
             break;
         }
       });
+  }
+);
+
+export const authListener = createAsyncThunk(
+  "@auth/authListener",
+  async (_, { dispatch }) => {
+    await fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(clearInputs());
+        dispatch(setUser(user?.email));
+      } else {
+        dispatch(setUser(""));
+      }
+    });
+  }
+);
+
+export const handleLogout = createAsyncThunk(
+  "@auth/handleLogout",
+  async (navigate) => {
+    await fire.auth().signOut();
+    navigate("/login");
   }
 );
