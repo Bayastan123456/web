@@ -47,7 +47,7 @@ export const handleLogin = createAsyncThunk(
           case "auth/user-disabled":
           case "auth/invalid-email":
           case "auth/user-not-found":
-            dispatch(setEmailError("Вы не достойны!"));
+            dispatch(setEmailError(err.message));
             break;
           case "auth/wrong-password":
             dispatch(setPasswordError(err.message));
