@@ -13,10 +13,12 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     clearInputs(state, action) {
-      (state.email = ""), (state.password = "");
+      state.email = "";
+      state.password = "";
     },
     clearErrors(state, action) {
-      (state.emailError = ""), (state.passwordError = "");
+      state.emailError = "";
+      state.passwordError = "";
     },
     setUser(state, action) {
       state.user = action.payload;
