@@ -15,9 +15,14 @@ const Home = () => {
   return (
     <div>
       Home
-      <br />
+      <hr />
       {user ? (
-        <button onClick={() => dispatch(handleLogout(navigate))}>Logout</button>
+        <div>
+          <h3>Welcome {user}</h3>
+          <button onClick={() => dispatch(handleLogout(navigate))}>
+            Logout
+          </button>
+        </div>
       ) : (
         <button onClick={() => navigate("/login")}>Login</button>
       )}
