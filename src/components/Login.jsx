@@ -20,7 +20,7 @@ const Login = () => {
     };
     dispatch(handleLogin(obj));
     console.log(obj);
-  };
+  }
 
   return (
     <div>
@@ -46,3 +46,4 @@ const Login = () => {
 };
 
 export default Login;
+

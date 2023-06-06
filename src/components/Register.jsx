@@ -19,7 +19,7 @@ const Register = () => {
       navigate,
     };
     dispatch(handleSignup(obj));
-  };
+  }
 
   return (
     <div>
