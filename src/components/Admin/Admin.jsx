@@ -9,11 +9,7 @@ const Admin = () => {
 
   const handleProduct = () => {
     if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
-<<<<<<< HEAD
-      alert("empty");
-=======
       alert("Заполните поля!");
->>>>>>> a4cc24476122870aac358d910fa239ea60e36364
       return;
     }
 
@@ -66,10 +62,6 @@ const Admin = () => {
         value={descr}
         onChange={(e) => setDescr(e.target.value)}
       />
-<<<<<<< HEAD
-
-=======
->>>>>>> a4cc24476122870aac358d910fa239ea60e36364
       <Button
         variant="contained"
         sx={{ width: "230px" }}
