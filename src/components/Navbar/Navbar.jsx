@@ -56,6 +56,12 @@ export default function Navbar() {
             >
               Products
             </Typography>
+            <Typography
+              onClick={() => navigate("/admin")}
+              style={{ color: "black", cursor: "pointer" }}
+            >
+              Admin
+            </Typography>
           </Box>
           <Box
             sx={{
