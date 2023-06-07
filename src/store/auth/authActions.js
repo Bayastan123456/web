@@ -1,15 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import fire from "../../fire";
 import {
   clearErrors,
   clearInputs,
+  setEmail,
   setEmailError,
+  setPassword,
   setPasswordError,
   setUser,
 } from "./authSlice";
+import fire from "../../fire";
 
-export const handleSignup = createAsyncThunk(
-  "@auth/handleSignup",
+export const hanleSingup = createAsyncThunk(
+  "@auth/handleSingup",
   async (obj, { dispatch }) => {
     dispatch(clearErrors());
     await fire
@@ -44,7 +46,7 @@ export const handleLogin = createAsyncThunk(
       })
       .catch((err) => {
         switch (err.code) {
-          case "auth/user-disabled":
+          case "auth/user-disavled":
           case "auth/invalid-email":
           case "auth/user-not-found":
             dispatch(setEmailError(err.message));
