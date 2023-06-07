@@ -1,11 +1,17 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { addProduct } from "../../store/products/productsActions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [descr, setDescr] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleProduct = () => {
     if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
@@ -18,11 +24,12 @@ const Admin = () => {
       image,
       descr,
     };
-    console.log(newProduct);
+    dispatch(addProduct(newProduct));
     setTitle("");
     setPrice("");
     setImage("");
     setDescr("");
+    navigate("/products");
   };
 
   return (

@@ -1,3 +1,25 @@
 {
-  "products": []
+  "products": [
+    {
+      "title": "Experience Italy",
+      "price": "14.95",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781838694715_800x.jpg?v=1666176450",
+      "descr": "rtbrthh",
+      "id": 1
+    },
+    {
+      "title": "terkg",
+      "price": "ekrn",
+      "image": "tljnjlrt",
+      "descr": "jqebrfhwef",
+      "id": 2
+    },
+    {
+      "title": "rergr",
+      "price": "ebfe",
+      "image": "ve",
+      "descr": "ve",
+      "id": 3
+    }
+  ]
 }
