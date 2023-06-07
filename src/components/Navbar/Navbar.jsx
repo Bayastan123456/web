@@ -6,11 +6,15 @@ import Typography from "@mui/material/Typography";
 import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import { ADMIN } from "../../helpers/consts";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const navigate = useNavigate();
 
   const [scrolled, setScrolled] = useState(false);
+
+  const { user } = useSelector((state) => state.auth);
 
   const handleScroll = () => {
     const isScrolled = window.scrollY > 0;
@@ -38,7 +42,10 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1, m: 0 }}>
-      <NavbarContainer position="stiky" sx={{ backgroundColor: "white", m: 0 }}>
+      <NavbarContainer
+        position="sticky"
+        sx={{ backgroundColor: "white", m: 0 }}
+      >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box
             sx={{
@@ -56,12 +63,14 @@ export default function Navbar() {
             >
               Products
             </Typography>
-            <Typography
-              onClick={() => navigate("/admin")}
-              style={{ color: "black", cursor: "pointer" }}
-            >
-              Admin
-            </Typography>
+            {user === ADMIN && (
+              <Typography
+                onClick={() => navigate("/admin")}
+                style={{ color: "black", cursor: "pointer" }}
+              >
+                Admin
+              </Typography>
+            )}
           </Box>
           <Box
             sx={{

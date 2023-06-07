@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { setProducts } from "./productsSlice";
 import { API } from "../../helpers/consts";
+import { setProducts } from "./productsSlice";
 
-export const getproducts = createAsyncThunk(
+export const getProducts = createAsyncThunk(
   "@products/getProducts",
   async (_, { dispatch }) => {
     const { data } = await axios(API);
@@ -12,9 +12,9 @@ export const getproducts = createAsyncThunk(
 );
 
 export const addProduct = createAsyncThunk(
-  "@product/addProduct",
+  "@products/addProduct",
   async (newProduct, { dispatch }) => {
     await axios.post(API, newProduct);
-    dispatch(getproducts());
+    dispatch(getProducts());
   }
 );

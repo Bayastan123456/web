@@ -27,7 +27,6 @@ const MainRoutes = () => {
         {PUBLIC_ROUTES.map((item) => (
           <Route path={item.link} element={item.element} key={item.id} />
         ))}
-
         {user &&
           PRIVATE_ROUTES.map((item) => (
             <Route

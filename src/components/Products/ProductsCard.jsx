@@ -31,7 +31,7 @@ const ProductsCard = ({ item }) => {
               {item.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              From ${item.price}USD
+              From ${item.price} USD
             </Typography>
           </CardContent>
         </CardActionArea>

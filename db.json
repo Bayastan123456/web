@@ -1,32 +1,25 @@
 {
   "products": [
     {
-      "title": "Best of France",
+      "title": "Experience Italy",
       "price": "14.95",
-      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/best-of-france-travel-guide_300x.jpg?v=1667638395",
-      "descr": "Some Descr",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781838698102_600x.jpg?v=1682916208",
+      "descr": "asd",
       "id": 1
     },
     {
-      "title": "Caribbean Islands",
-      "price": "Sale priceFrom $16.95 USD",
-      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781787016736_300x.jpg?v=1666256562",
-      "descr": "SomeDescription",
+      "title": "Japan",
+      "price": "18.95",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781788683814_200x.jpg?v=1666176503",
+      "descr": "234",
       "id": 2
     },
     {
-      "title": "Coastal California",
-      "price": "4.95",
-      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/coastal-california-travel-guide_300x.jpg?v=1667638354",
-      "descr": "SomeDecr",
+      "title": "France",
+      "price": "18.95",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781788680523_200x.jpg?v=1666176466",
+      "descr": "asd",
       "id": 3
-    },
-    {
-      "title": "Epic Bike Rides of the World (Paperback)",
-      "price": "13.99",
-      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/epic-bike-rides-of-the-world-paperback_300x.jpg?v=1667638082",
-      "descr": "Descr",
-      "id": 4
     }
   ]
 }

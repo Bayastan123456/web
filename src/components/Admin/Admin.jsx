@@ -2,7 +2,6 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/products/productsActions";
-import { useNavigate } from "react-router";
 
 const Admin = () => {
   const [title, setTitle] = useState("");
@@ -11,7 +10,6 @@ const Admin = () => {
   const [descr, setDescr] = useState("");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleProduct = () => {
     if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
@@ -25,9 +23,7 @@ const Admin = () => {
       image,
       descr,
     };
-
     dispatch(addProduct(newProduct));
-
     setTitle("");
     setPrice("");
     setImage("");
