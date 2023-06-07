@@ -1,11 +1,15 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../store/products/productsActions";
 
 const Admin = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [descr, setDescr] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleProduct = () => {
     if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
@@ -19,7 +23,7 @@ const Admin = () => {
       image,
       descr,
     };
-    console.log(newProduct);
+    dispatch(addProduct(newProduct));
     setTitle("");
     setPrice("");
     setImage("");
