@@ -58,7 +58,7 @@ const Admin = () => {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      <TextFieldimport
+      <TextField
         label="Image"
         value={image}
         onChange={(e) => setImage(e.target.value)}

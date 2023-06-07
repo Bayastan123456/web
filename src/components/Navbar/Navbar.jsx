@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const navigate = useNavigate();
