@@ -16,4 +16,5 @@ export const productsSlice = createSlice({
 });
 
 export const { setProducts } = productsSlice.actions;
+
 export const productsReducer = productsSlice.reducer;

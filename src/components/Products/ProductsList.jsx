@@ -9,6 +9,7 @@ const ProductsList = () => {
   const { products } = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getProducts());
   }, []);
