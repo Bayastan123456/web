@@ -1,12 +1,8 @@
-import { Box, Button, Typography } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import SimpleLGQuery from "./MediaNotFound";
 
 const NotFound = () => {
-  const navigate = useNavigate();
-  const style = grey[900];
-
   return (
     <Box
       sx={{
@@ -23,28 +19,13 @@ const NotFound = () => {
           fontSize: "200px",
           fontWeight: "700",
           position: "absolute",
+          fontFamily: "ubuntu",
         }}
       >
         404
       </Typography>
-      <Typography variant="h3" sx={{ mt: "165px" }}>
-        Page not found
-      </Typography>
-      <Typography sx={{ mt: "20px" }}>
-        Sorry, this page does not exist.
-      </Typography>
-      <Button
-        onClick={() => navigate("/")}
-        variant="contained"
-        sx={{
-          backgroundColor: style,
-          borderRadius: "50px",
-          mt: "30px",
-          width: "9vw",
-        }}
-      >
-        Back to home
-      </Button>
+
+      {SimpleLGQuery()}
     </Box>
   );
 };
