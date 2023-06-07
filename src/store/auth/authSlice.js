@@ -41,8 +41,8 @@ export const authSlice = createSlice({
 export const authReducer = authSlice.reducer;
 
 export const {
-  clearInputs,
   clearErrors,
+  clearInputs,
   setUser,
   setEmail,
   setPassword,

@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { handleLogin } from "../store/auth/authActions";
 import { setEmail, setPassword } from "../store/auth/authSlice";
+import { handleLogin } from "../store/auth/authActions";
 
 const Login = () => {
   const { email, password, emailError, passwordError } = useSelector(
