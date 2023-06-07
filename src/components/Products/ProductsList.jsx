@@ -13,7 +13,6 @@ const ProductsList = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
-
   return (
     <>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "5vw" }}>
