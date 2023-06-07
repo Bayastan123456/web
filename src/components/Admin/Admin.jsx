@@ -61,7 +61,6 @@ const Admin = () => {
         value={descr}
         onChange={(e) => setDescr(e.target.value)}
       />
-
       <Button
         variant="contained"
         sx={{ width: "230px" }}
