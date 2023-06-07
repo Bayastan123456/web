@@ -13,6 +13,20 @@
       "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781787016736_300x.jpg?v=1666256562",
       "descr": "SomeDescription",
       "id": 2
+    },
+    {
+      "title": "Coastal California",
+      "price": "4.95",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/coastal-california-travel-guide_300x.jpg?v=1667638354",
+      "descr": "SomeDecr",
+      "id": 3
+    },
+    {
+      "title": "Epic Bike Rides of the World (Paperback)",
+      "price": "13.99",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/epic-bike-rides-of-the-world-paperback_300x.jpg?v=1667638082",
+      "descr": "Descr",
+      "id": 4
     }
   ]
 }

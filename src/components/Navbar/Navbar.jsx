@@ -38,7 +38,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1, m: 0 }}>
-      <NavbarContainer position="fixed" sx={{ backgroundColor: "white", m: 0 }}>
+      <NavbarContainer position="stiky" sx={{ backgroundColor: "white", m: 0 }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box
             sx={{
