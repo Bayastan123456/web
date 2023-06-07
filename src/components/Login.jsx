@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setEmail, setPassword } from "../store/auth/authSlice";
+import { setEmail, setPassword, setUser } from "../store/auth/authSlice";
 import { handleLogin } from "../store/auth/authActions";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -47,7 +47,3 @@ const Login = () => {
 
 export default Login;
 
-export const authListener = createAsyncThunk(
-  "@auth/authListener",
-  async (_, { dispatch }) => {}
-);
