@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setEmail, setPassword, setUser } from "../store/auth/authSlice";
 import { handleLogin } from "../store/auth/authActions";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const Login = () => {
   const { email, password, emailError, passwordError } = useSelector(
@@ -13,14 +12,15 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleUser() {
+  const handleUser = () => {
     const obj = {
       email,
       password,
       navigate,
     };
     dispatch(handleLogin(obj));
-  }
+    console.log(obj);
+  };
 
   return (
     <div>
@@ -40,10 +40,9 @@ const Login = () => {
         onChange={(e) => dispatch(setPassword(e.target.value))}
       />
       <br />
-      <button onClick={() => handleUser()}>Login</button>
+      <button onClick={handleUser}>Login</button>
     </div>
   );
 };
 
 export default Login;
-

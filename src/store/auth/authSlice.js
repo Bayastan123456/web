@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: "@auth",
   initialState,
   reducers: {
     clearInputs(state, action) {
@@ -39,12 +39,13 @@ export const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+
 export const {
   clearErrors,
   clearInputs,
-  setEmail,
-  setEmailError,
-  setPassword,
-  setPasswordError,
   setUser,
+  setEmail,
+  setPassword,
+  setEmailError,
+  setPasswordError,
 } = authSlice.actions;

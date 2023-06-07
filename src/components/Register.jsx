@@ -1,9 +1,8 @@
-import { Password } from "@mui/icons-material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setEmail, setPassword } from "../store/auth/authSlice";
-import { handleSignup } from "../store/auth/authActions";
+import { hanleSingup } from "../store/auth/authActions";
 
 const Register = () => {
   const { email, password, emailError, passwordError } = useSelector(
@@ -13,14 +12,14 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleUser() {
+  const handleUser = () => {
     const obj = {
       email,
       password,
       navigate,
     };
-    dispatch(handleSignup(obj));
-  }
+    dispatch(hanleSingup(obj));
+  };
 
   return (
     <div>
@@ -40,7 +39,7 @@ const Register = () => {
         onChange={(e) => dispatch(setPassword(e.target.value))}
       />
       <br />
-      <button onClick={() => handleUser()}>Register</button>
+      <button onClick={handleUser}>Register</button>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import AdminPage from "../pages/AdminPage";
+import ProductsPage from "../pages/ProductsPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -12,7 +13,8 @@ const MainRoutes = () => {
     { link: "/login", element: <LoginPage />, id: 2 },
     { link: "/register", element: <RegisterPage />, id: 3 },
     { link: "/admin", element: <AdminPage />, id: 4 },
-    { link: "*", element: <NotFoundPage />, id: 5 },
+    { link: "/products", element: <ProductsPage />, id: 5 },
+    { link: "*", element: <NotFoundPage />, id: 6 },
   ];
   return (
     <>

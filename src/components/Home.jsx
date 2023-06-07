@@ -11,9 +11,11 @@ const Home = () => {
   useEffect(() => {
     dispatch(authListener());
   }, []);
+
   return (
     <div>
-      <br />
+      Home
+      <hr />
       {user ? (
         <div>
           <h3>Welcome {user}</h3>
