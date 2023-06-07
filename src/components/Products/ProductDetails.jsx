@@ -1,7 +1,7 @@
 import { Button, CardMedia, Divider, Stack, Typography } from "@mui/material";
 import Star from "@mui/icons-material/Star";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -18,19 +18,15 @@ const ColorButton = styled(Button)(() => ({
   borderRadius: "50px !important",
   padding: "7px 18px !important",
   width: "216px !important",
-  "&:hover": {
-    borderColor: "#000 !important",
-    color: "#000 !important",
-    backgroundColor: "#fff !important",
-  },
 }));
 
 function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { productDetails } = useSelector((state) => state.products);
   const { user } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getOneProduct(id));
@@ -204,7 +200,7 @@ function ProductDetails() {
         <Divider sx={{ marginBottom: "40px" }} />
 
         <Stack direction="row" sx={{ flexWrap: "wrap", gap: "10px" }}>
-          {user === ADMIN ? (
+          {user === ADMIN && location.pathname !== "/" ? (
             <>
               {" "}
               <ColorButton

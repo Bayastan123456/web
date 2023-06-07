@@ -342,7 +342,7 @@ export default function Navbar() {
           {/* start way to login and register, need imports:
            */}
           <Box sx={{ width: "20%", display: "flex", gap: "5px" }}>
-            {user ? (
+            {/* {user ? (
               <>
                 <Typography color="black">Log out</Typography>
                 <LogoutIcon
@@ -364,7 +364,7 @@ export default function Navbar() {
                   }}
                 />
               </>
-            )}
+            )} */}
           </Box>
           <Box sx={{ width: "20%" }}>
             {/* <ShoppingCartIcon color="primary" /> */}
