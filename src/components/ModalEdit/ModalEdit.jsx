@@ -7,8 +7,6 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 const style = {
   position: "absolute",
   height: "500px",
@@ -31,27 +29,6 @@ const ModalEdit = ({ productDetails }) => {
   const [price, setPrice] = useState(productDetails.price);
   const [image, setImage] = useState(productDetails.image);
   const [descr, setDescr] = useState(productDetails.descr);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const handleProduct = () => {
-    if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
-      alert("Заполните поля!");
-      return;
-    }
-    let newProduct = {
-      title,
-      price,
-      image,
-      descr,
-    };
-    // dispatch(addProduct(newProduct));
-    setTitle("");
-    setPrice("");
-    setImage("");
-    setDescr("");
-    navigate("/products");
-  };
 
   return (
     <Box sx={{ width: "100%" }}>
