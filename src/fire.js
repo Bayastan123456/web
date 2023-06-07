@@ -3,12 +3,12 @@ import "firebase/compat/auth";
 import "firebase/compat/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAA53XzriRMGJBcqKY2Q8pL_eHLhFl8MnQ",
-  authDomain: "autoficationmentorpr.firebaseapp.com",
-  projectId: "autoficationmentorpr",
-  storageBucket: "autoficationmentorpr.appspot.com",
-  messagingSenderId: "187117760583",
-  appId: "1:187117760583:web:2510e2478581a078c38162",
+  apiKey: "AIzaSyCnPDGbD0rH2NXXVlWNLXNh2L_8bR7p1QI",
+  authDomain: "firstproject312.firebaseapp.com",
+  projectId: "firstproject312",
+  storageBucket: "firstproject312.appspot.com",
+  messagingSenderId: "84690673609",
+  appId: "1:84690673609:web:2ce18d257afdd6acf5d218",
 };
 
 const fire = firebase.initializeApp(firebaseConfig);
