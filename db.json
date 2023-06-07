@@ -1,3 +1,18 @@
 {
-  "products": []
+  "products": [
+    {
+      "title": "Best of France",
+      "price": "14.95",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/best-of-france-travel-guide_300x.jpg?v=1667638395",
+      "descr": "Some Descr",
+      "id": 1
+    },
+    {
+      "title": "Caribbean Islands",
+      "price": "Sale priceFrom $16.95 USD",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781787016736_300x.jpg?v=1666256562",
+      "descr": "SomeDescription",
+      "id": 2
+    }
+  ]
 }

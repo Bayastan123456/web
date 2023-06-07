@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 /src/fire.js
-
+/db.json
 # testing
 /coverage
 

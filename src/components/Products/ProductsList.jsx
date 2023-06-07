@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductsCard from "./ProductsCard";
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { getproducts } from "../../store/products/productsActions";
 
 const ProductsList = () => {
+  const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getproducts());
+  }, []);
+
   return (
     <>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "5vw" }}>
-        <ProductsCard />
-        <ProductsCard />
+        {products.map((item) => (
+          <ProductsCard item={item} key={item.id} />
+        ))}
       </Box>
     </>
   );

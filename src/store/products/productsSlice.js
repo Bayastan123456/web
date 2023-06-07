@@ -7,8 +7,14 @@ const initialState = {
 export const productsSlice = createSlice({
   name: "@products",
   initialState,
-  reducers: {},
+  reducers: {
+    setProducts(state, action) {
+      state.products = action.payload;
+    },
+  },
   // extraReducers:
 });
+
+export const { setProducts } = productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;
