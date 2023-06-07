@@ -194,13 +194,13 @@ const HomePage = () => {
           >
             <ToggleButton
               sx={{ border: "none", borderBottom: "solid 5px" }}
-              value="web"
+              value="Experience"
             >
               EXPERIENCE
             </ToggleButton>
             <ToggleButton
               sx={{ border: "none", borderBottom: "solid 5px" }}
-              value="android"
+              value="EBOOKS"
             >
               EBOOKS
             </ToggleButton>
