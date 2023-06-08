@@ -27,7 +27,6 @@ const style = {
 };
 
 const ModalEdit = ({ productDetails }) => {
-  console.log(productDetails);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -36,17 +35,21 @@ const ModalEdit = ({ productDetails }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const { productDetails } = useSelector((state) => state.products);
-
-  useEffect(() => {
-    dispatch(getOneProduct(id));
-    console.log(id);
-  }, [id]);
-
   const [title, setTitle] = useState(productDetails.title);
   const [price, setPrice] = useState(productDetails.price);
   const [image, setImage] = useState(productDetails.image);
   const [descr, setDescr] = useState(productDetails.descr);
+
+  useEffect(() => {
+    dispatch(getOneProduct(id));
+  }, [id]);
+
+  useEffect(() => {
+    setTitle(productDetails.title);
+    setPrice(productDetails.price);
+    setImage(productDetails.image);
+    setDescr(productDetails.descr);
+  }, [productDetails]);
 
   const handleEdit = () => {
     if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
