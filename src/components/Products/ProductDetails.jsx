@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getOneProduct } from "../../store/products/productsActions";
 import { useDispatch, useSelector } from "react-redux";
+import ModalEdit from "../ModalEdit/ModalEdit";
+import { ADMIN } from "../../helpers/consts";
 
 const ColorButton = styled(Button)(() => ({
   color: "#000 !important",
@@ -25,6 +27,7 @@ function ProductDetails() {
   const dispatch = useDispatch();
 
   const { productDetails } = useSelector((state) => state.products);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getOneProduct(id));
@@ -181,52 +184,78 @@ function ProductDetails() {
         <Divider sx={{ marginBottom: "40px" }} />
 
         <Stack direction="row" sx={{ flexWrap: "wrap", gap: "10px" }}>
-          <ColorButton
-            variant="outlined"
-            sx={{
-              backgroundColor: "#0057D9",
-              "&:hover": {
-                backgroundColor: "#0057D9 !important",
-              },
-            }}
-          >
-            <Stack>
-              <Typography
-                variant="body2"
+          {user === ADMIN ? (
+            <>
+              <ColorButton
+                variant="outlined"
                 sx={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "white",
+                  backgroundColor: "#0057D9",
+                  "&:hover": {
+                    backgroundColor: "#0057D9 !important",
+                  },
                 }}
               >
-                Add card
-              </Typography>
-            </Stack>
-          </ColorButton>
-
-          <ColorButton
-            variant="outlined"
-            sx={{
-              backgroundColor: " rgba(98, 60, 150, 0.932)",
-
-              "&:hover": {
-                backgroundColor: "rgba(98, 60, 150, 0.932) !important",
-              },
-            }}
-          >
-            <Stack>
-              <Typography
-                variant="body2"
+                <Stack>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      color: "white",
+                    }}
+                  >
+                    {<ModalEdit />}
+                  </Typography>
+                </Stack>
+              </ColorButton>
+              <ColorButton
+                variant="outlined"
                 sx={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "white",
+                  backgroundColor: " rgba(98, 60, 150, 0.932)",
+
+                  "&:hover": {
+                    backgroundColor: "rgba(98, 60, 150, 0.932) !important",
+                  },
                 }}
               >
-                Delete card
-              </Typography>
-            </Stack>
-          </ColorButton>
+                <Stack>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      color: "white",
+                    }}
+                  >
+                    Delete card
+                  </Typography>
+                </Stack>
+              </ColorButton>
+            </>
+          ) : (
+            <ColorButton
+              variant="outlined"
+              sx={{
+                backgroundColor: "#0057D9",
+                "&:hover": {
+                  backgroundColor: "#0057D9 !important",
+                },
+              }}
+            >
+              <Stack>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    color: "white",
+                  }}
+                >
+                  Add to cart
+                </Typography>
+              </Stack>
+            </ColorButton>
+          )}
         </Stack>
 
         <Divider sx={{ margin: "20px 0" }} />
