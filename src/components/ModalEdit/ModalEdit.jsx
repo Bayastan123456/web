@@ -27,6 +27,7 @@ const style = {
 };
 
 const ModalEdit = ({ productDetails }) => {
+  console.log(productDetails);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -57,7 +58,6 @@ const ModalEdit = ({ productDetails }) => {
       id: productDetails.id,
     };
     dispatch(editProduct(editedProduct));
-
     setTitle("");
     setPrice("");
     setImage("");
