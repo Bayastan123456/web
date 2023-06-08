@@ -2,6 +2,7 @@ import { Button, Divider, Stack, Typography } from "@mui/material";
 import Star from "@mui/icons-material/Star";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
   deleteProduct,
@@ -35,11 +36,6 @@ function ProductDetails() {
   useEffect(() => {
     dispatch(getOneProduct(id));
   }, [id]);
-
-  function deleter() {
-    dispatch(deleteProduct(id));
-    navigate("/products");
-  }
 
   console.log(productDetails);
   return (
@@ -204,10 +200,9 @@ function ProductDetails() {
                   },
                 }}
               >
-                <ModalEdit />
+                <ModalEdit productDetails={productDetails} />
               </ColorButton>
               <ColorButton
-                onClick={deleter}
                 variant="outlined"
                 sx={{
                   backgroundColor: " rgba(98, 60, 150, 0.932)",
@@ -215,6 +210,10 @@ function ProductDetails() {
                   "&:hover": {
                     backgroundColor: "rgba(98, 60, 150, 0.932) !important",
                   },
+                }}
+                onClick={() => {
+                  dispatch(deleteProduct(id));
+                  navigate("/products");
                 }}
               >
                 <Stack>
