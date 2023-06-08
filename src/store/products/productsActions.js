@@ -34,3 +34,11 @@ export const editProduct = createAsyncThunk(
     dispatch(getProducts());
   }
 );
+
+export const deleteProduct = createAsyncThunk(
+  "@products/deleteProduct",
+  async (id, { dispatch }) => {
+    await axios.delete(`${API}/${id}`);
+    dispatch(getProducts());
+  }
+);
