@@ -7,10 +7,12 @@ import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { ADMIN } from "../../helpers/consts";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { authListener } from "../../store/auth/authActions";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -39,6 +41,10 @@ export default function Navbar() {
     flexGrow: 1,
     display: { xs: "none", sm: "block" },
   }));
+
+  useEffect(() => {
+    dispatch(authListener());
+  }, []);
 
   return (
     <Box sx={{ flexGrow: 1, m: 0 }}>
