@@ -30,6 +30,27 @@ const ModalEdit = ({ productDetails }) => {
   const [image, setImage] = useState(productDetails.image);
   const [descr, setDescr] = useState(productDetails.descr);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleProduct = () => {
+    if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
+      alert("Заполните поля!");
+      return;
+    }
+    let newProduct = {
+      title,
+      price,
+      image,
+      descr,
+    };
+    dispatch(addProduct(newProduct));
+    setTitle("");
+    setPrice("");
+    setImage("");
+    setDescr("");
+    navigate("/products");
+  };
+
   return (
     <Box sx={{ width: "100%" }}>
       <Stack>
