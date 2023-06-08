@@ -196,7 +196,7 @@ function ProductDetails() {
                   },
                 }}
               >
-                <ModalEdit />
+                <ModalEdit productDetails={productDetails} />
               </ColorButton>
               <ColorButton
                 variant="outlined"
