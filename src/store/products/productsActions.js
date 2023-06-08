@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API } from "../../helpers/consts";
 import { setProducts } from "./productsSlice";
+import { API } from "../../helpers/consts";
 
 export const getProducts = createAsyncThunk(
   "@products/getProducts",
