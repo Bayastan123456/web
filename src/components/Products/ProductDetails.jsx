@@ -37,7 +37,7 @@ function ProductDetails() {
       spacing={15}
       sx={{ width: "100%", display: "flex", justifyContent: "center" }}
     >
-      <img src={productDetails.image} alt="img" />
+      <img src={productDetails?.image} alt="img" />
 
       <div style={{ width: "520px" }}>
         <Typography
@@ -56,7 +56,7 @@ function ProductDetails() {
             marginTop: "6px",
           }}
         >
-          {productDetails.title}
+          {productDetails?.title}
         </Typography>
 
         <Typography
@@ -83,7 +83,7 @@ function ProductDetails() {
           variant="body2"
           sx={{ fontSize: "24px", fontWeight: "600" }}
         >
-          ${productDetails.price} USD
+          ${productDetails?.price} USD
         </Typography>
 
         <Stack direction="row">
@@ -103,10 +103,10 @@ function ProductDetails() {
           sx={{ color: "#4d4444", fontSize: "16px", marginTop: "20px" }}
         >
           <strong>
-            Lonely Planet's{" "}
-            <span style={{ fontStyle: "italic" }}>{productDetails.title} </span>
-          </strong>
-          {productDetails.descr}
+            Lonely Planet’s{" "}
+            <span style={{ fontStyle: "italic" }}>{productDetails?.title}</span>
+          </strong>{" "}
+          {productDetails?.descr}
         </Typography>
 
         <Typography
