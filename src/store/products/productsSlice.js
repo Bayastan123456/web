@@ -3,7 +3,7 @@ import { getOneProduct } from "./productsActions";
 
 const initialState = {
   products: [],
-  productDetails: null,
+  productDetails: {},
 };
 
 export const productsSlice = createSlice({

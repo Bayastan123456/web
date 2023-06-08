@@ -36,7 +36,6 @@ function ProductDetails() {
     dispatch(getOneProduct(id));
   }, [id]);
 
-  console.log(productDetails);
   return (
     <Stack
       direction="row"
