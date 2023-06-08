@@ -18,3 +18,11 @@ export const addProduct = createAsyncThunk(
     dispatch(getProducts());
   }
 );
+
+export const getOneProduct = createAsyncThunk(
+  "@product/getOneProduct",
+  async (id) => {
+    const { data } = await axios(`${API}/${id}`);
+    return data;
+  }
+);

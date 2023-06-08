@@ -4,7 +4,7 @@ import ProductsAccardion from "../components/Products/ProductsAccardion";
 import ProductsList from "../components/Products/ProductsList";
 import { Link } from "react-router-dom";
 import { Pagination, Typography } from "@mui/material";
-import SelectSmall, { CustomizedMenus } from "../components/SortBy";
+import SelectSmall from "../components/SortBy";
 
 const ProductsPage = () => {
   return (

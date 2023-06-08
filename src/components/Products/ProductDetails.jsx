@@ -1,7 +1,10 @@
 import { Button, Divider, Stack, Typography } from "@mui/material";
 import Star from "@mui/icons-material/Star";
-import styles from "./style.module.css";
 import styled from "styled-components";
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getOneProduct } from "../../store/products/productsActions";
 
 const ColorButton = styled(Button)(() => ({
   color: "#000 !important",
@@ -18,17 +21,24 @@ const ColorButton = styled(Button)(() => ({
 }));
 
 function ProductDetails() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const { pruductDetails } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(getOneProduct(id));
+  }, [id]);
+
+  console.log(pruductDetails);
+
   return (
     <Stack
       direction="row"
       spacing={15}
       sx={{ width: "100%", display: "flex", justifyContent: "center" }}
     >
-      <img
-        class={styles.img}
-        src="https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781788683814_500x.jpg?v=1666176503"
-        alt="img"
-      />
+      <img src={pruductDetails?.image} alt="img" />
 
       <div style={{ width: "520px" }}>
         <Typography
@@ -47,7 +57,7 @@ function ProductDetails() {
             marginTop: "6px",
           }}
         >
-          Japan
+          {pruductDetails?.title}
         </Typography>
 
         <Typography
@@ -74,7 +84,7 @@ function ProductDetails() {
           variant="body2"
           sx={{ fontSize: "24px", fontWeight: "600" }}
         >
-          $18.95 USD
+          {pruductDetails.price}
         </Typography>
 
         <Stack direction="row">
@@ -94,10 +104,10 @@ function ProductDetails() {
           sx={{ color: "#4d4444", fontSize: "16px", marginTop: "20px" }}
         >
           <strong>
-            Lonely Planet’s <span style={{ fontStyle: "italic" }}>Japan</span>
+            Lonely Planet’s{" "}
+            <span style={{ fontStyle: "italic" }}>{pruductDetails?.title}</span>
           </strong>{" "}
-          is your passport to the most relevant, up-to-date advice on what to
-          see and skip, and what hidden
+          {pruductDetails?.descr}
         </Typography>
 
         <Typography
