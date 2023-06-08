@@ -63,12 +63,7 @@ export default function Navbar() {
             >
               Products
             </Typography>
-            <Typography
-              onClick={() => navigate("/admin")}
-              style={{ color: "black", cursor: "pointer" }}
-            >
-              Products
-            </Typography>
+
             {user === ADMIN && (
               <Typography
                 onClick={() => navigate("/admin")}
