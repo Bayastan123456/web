@@ -1,10 +1,11 @@
-import { Button, Divider, Stack, Typography } from "@mui/material";
+import { Button, CardMedia, Divider, Stack, Typography } from "@mui/material";
 import Star from "@mui/icons-material/Star";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneProduct } from "../../store/products/productsActions";
+import { ADMIN } from "../../helpers/consts";
 
 const ColorButton = styled(Button)(() => ({
   color: "#000 !important",
@@ -25,6 +26,7 @@ function ProductDetails() {
   const dispatch = useDispatch();
 
   const { productDetails } = useSelector((state) => state.products);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getOneProduct(id));
@@ -37,7 +39,9 @@ function ProductDetails() {
       spacing={15}
       sx={{ width: "100%", display: "flex", justifyContent: "center" }}
     >
-      <img src={productDetails?.image} alt="img" />
+      <CardMedia>
+        <img src={productDetails?.image} alt="img" />
+      </CardMedia>
 
       <div style={{ width: "520px" }}>
         <Typography
@@ -181,52 +185,78 @@ function ProductDetails() {
         <Divider sx={{ marginBottom: "40px" }} />
 
         <Stack direction="row" sx={{ flexWrap: "wrap", gap: "10px" }}>
-          <ColorButton
-            variant="outlined"
-            sx={{
-              backgroundColor: "#0057D9",
-              "&:hover": {
-                backgroundColor: "#0057D9 !important",
-              },
-            }}
-          >
-            <Stack>
-              <Typography
-                variant="body2"
+          {user === ADMIN ? (
+            <>
+              <ColorButton
+                variant="outlined"
                 sx={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "white",
+                  backgroundColor: "#0057D9",
+                  "&:hover": {
+                    backgroundColor: "#0057D9 !important",
+                  },
                 }}
               >
-                Add card
-              </Typography>
-            </Stack>
-          </ColorButton>
-
-          <ColorButton
-            variant="outlined"
-            sx={{
-              backgroundColor: " rgba(98, 60, 150, 0.932)",
-
-              "&:hover": {
-                backgroundColor: "rgba(98, 60, 150, 0.932) !important",
-              },
-            }}
-          >
-            <Stack>
-              <Typography
-                variant="body2"
+                <Stack>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      color: "white",
+                    }}
+                  >
+                    Edit card
+                  </Typography>
+                </Stack>
+              </ColorButton>
+              <ColorButton
+                variant="outlined"
                 sx={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "white",
+                  backgroundColor: " rgba(98, 60, 150, 0.932)",
+
+                  "&:hover": {
+                    backgroundColor: "rgba(98, 60, 150, 0.932) !important",
+                  },
                 }}
               >
-                Delete card
-              </Typography>
-            </Stack>
-          </ColorButton>
+                <Stack>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      color: "white",
+                    }}
+                  >
+                    Delete card
+                  </Typography>
+                </Stack>
+              </ColorButton>
+            </>
+          ) : (
+            <ColorButton
+              variant="outlined"
+              sx={{
+                backgroundColor: "#0057D9",
+                "&:hover": {
+                  backgroundColor: "#0057D9 !important",
+                },
+              }}
+            >
+              <Stack>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    color: "white",
+                  }}
+                >
+                  Add to cart
+                </Typography>
+              </Stack>
+            </ColorButton>
+          )}
         </Stack>
 
         <Divider sx={{ margin: "20px 0" }} />
