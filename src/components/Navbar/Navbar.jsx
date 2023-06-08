@@ -5,10 +5,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
-import { styled } from "@mui/material/styles";
+// import { styled } from "@mui/material/styles";
 import { ADMIN } from "../../helpers/consts";
 import { useDispatch, useSelector } from "react-redux";
-import { authListener } from "../../store/auth/authActions";
+import { authListener, handleLogout } from "../../store/auth/authActions";
+import { clearInputs } from "../../store/auth/authSlice";
+// import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -32,15 +35,10 @@ export default function Navbar() {
     };
   }, [scrolled]);
 
-  const NavbarContainer = styled(AppBar)(({ theme }) => ({
-    backgroundColor: scrolled ? "#ff0000" : "transparent",
-    transition: "background-color 0.3s ease",
-  }));
-
-  const StyledTypography = styled(Typography)(({ theme }) => ({
-    flexGrow: 1,
-    display: { xs: "none", sm: "block" },
-  }));
+  // const NavbarContainer = styled(AppBar)(({ theme }) => ({
+  //   backgroundColor: scrolled ? "#ff0000" : "transparent",
+  //   transition: "background-color 0.3s ease",
+  // }));
 
   useEffect(() => {
     dispatch(authListener());
@@ -48,11 +46,41 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1, m: 0 }}>
-      <NavbarContainer
-        position="sticky"
-        sx={{ backgroundColor: "white", m: 0 }}
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: !scrolled
+            ? "rgba(255,255,255,0)"
+            : "rgba(255,255,255,1)",
+          boxShadow: 0,
+          m: 0,
+          // opacity: !scrolled ? 0 : 1,
+        }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        {!scrolled && (
+          <Box
+            sx={{
+              width: "100%",
+              backgroundColor: "black",
+              color: "white",
+              height: "40px",
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography sx={{ fontSize: "12px" }}>
+              FREE SHIPPING ON ALL ORDERS!
+            </Typography>
+          </Box>
+        )}
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <Box
             sx={{
               width: "20%",
@@ -97,12 +125,28 @@ export default function Navbar() {
               onClick={() => navigate("/")}
             />
           </Box>
-
           <Box sx={{ width: "20%" }}>
-            <LoginIcon color="primary" />
+            {/* <ShoppingCartIcon color="primary" /> */}
+            {user ? (
+              <LogoutIcon
+                color="primary"
+                onClick={() => {
+                  dispatch(handleLogout(navigate));
+                  dispatch(clearInputs());
+                }}
+              />
+            ) : (
+              <LoginIcon
+                color="primary"
+                onClick={() => {
+                  navigate("/login");
+                  dispatch(clearInputs());
+                }}
+              />
+            )}
           </Box>
         </Toolbar>
-      </NavbarContainer>
+      </AppBar>
     </Box>
   );
 }
