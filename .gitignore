@@ -5,12 +5,8 @@
 /.pnp
 .pnp.js
 /src/fire.js
-<<<<<<< HEAD
-/db.json
-=======
 ./db.json
 
->>>>>>> 41c32134daa85c2ea37da57d9838a59cff255b7d
 # testing
 /coverage
 

@@ -1,6 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { API } from "../../helpers/consts";
+import { createSlice } from "@reduxjs/toolkit";
+import { getOneProduct } from "./productsActions";
 
 const initialState = {
   products: [],
@@ -25,11 +24,3 @@ export const productsSlice = createSlice({
 export const { setProducts } = productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;
-
-export const getOneProduct = createAsyncThunk(
-  "@products/getOneProduct",
-  async (id) => {
-    const { data } = await axios(`${API}/${id}`);
-    return data;
-  }
-);
