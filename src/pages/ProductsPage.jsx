@@ -1,16 +1,18 @@
-import { Box } from "@mui/system";
+import { Box, display } from "@mui/system";
 import React from "react";
 import ProductsAccardion from "../components/Products/ProductsAccardion";
 import ProductsList from "../components/Products/ProductsList";
 import { Link } from "react-router-dom";
-import { Typography } from "@mui/material";
+import { Pagination, Typography } from "@mui/material";
 import SelectSmall, { CustomizedMenus } from "../components/SortBy";
 
 const ProductsPage = () => {
   return (
     <Box sx={{ margin: 0, padding: 0, boxSizing: "border-box" }}>
-      <Link to="/">Home</Link>
-      <span>/All</span>
+      <Box sx={{ marginTop: "3vh", marginLeft: "3vw" }}>
+        <Link to="/">Home</Link>
+        <span>/All</span>
+      </Box>
       <Box
         sx={{
           height: "40vh",
@@ -44,6 +46,9 @@ const ProductsPage = () => {
         <Box sx={{ width: "75%" }}>
           <ProductsList />
         </Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center", mt: "10vh" }}>
+        <Pagination />
       </Box>
     </Box>
   );
