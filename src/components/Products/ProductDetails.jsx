@@ -1,10 +1,13 @@
 import { Button, Divider, Stack, Typography } from "@mui/material";
 import Star from "@mui/icons-material/Star";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getOneProduct } from "../../store/products/productsActions";
+import {
+  deleteProduct,
+  getOneProduct,
+} from "../../store/products/productsActions";
 import ModalEdit from "../ModalEdit/ModalEdit";
 import { ADMIN } from "../../helpers/consts";
 
@@ -25,6 +28,7 @@ const ColorButton = styled(Button)(() => ({
 function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { productDetails } = useSelector((state) => state.products);
   const { user } = useSelector((state) => state.auth);
@@ -206,6 +210,10 @@ function ProductDetails() {
                   "&:hover": {
                     backgroundColor: "rgba(98, 60, 150, 0.932) !important",
                   },
+                }}
+                onClick={() => {
+                  dispatch(deleteProduct(id));
+                  navigate("/products");
                 }}
               >
                 <Stack>
