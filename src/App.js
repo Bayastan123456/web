@@ -1,13 +1,13 @@
 import React from "react";
 import MainRoutes from "./routes/MainRoutes";
 import Navbar from "./components/Navbar/Navbar";
-import { Card } from "@mui/material";
+import Cart from "./components/Cart/Cart";
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <Card />
+      <Cart />
       <MainRoutes />
     </div>
   );
