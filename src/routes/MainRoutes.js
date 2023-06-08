@@ -8,6 +8,7 @@ import AdminPage from "../pages/AdminPage";
 import ProductsPage from "../pages/ProductsPage";
 import { useSelector } from "react-redux";
 import { ADMIN } from "../helpers/consts";
+import ProductDetails from "../components/Products/ProductDetails";
 
 const MainRoutes = () => {
   const { user } = useSelector((state) => state.auth);
