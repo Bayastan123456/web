@@ -1,4 +1,11 @@
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React from "react";
 const style = {
   position: "absolute",
@@ -19,7 +26,19 @@ const ModalEdit = () => {
   const handleClose = () => setOpen(false);
   return (
     <Box sx={{ width: "100%" }}>
-      <Button onClick={handleOpen}>Edit</Button>
+      <Stack>
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: "16px",
+            fontWeight: "600",
+            color: "white",
+          }}
+          onClick={handleOpen}
+        >
+          Edit card
+        </Typography>
+      </Stack>
       <Modal
         open={open}
         onClose={handleClose}
