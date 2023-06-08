@@ -26,3 +26,11 @@ export const getOneProduct = createAsyncThunk(
     return data;
   }
 );
+
+export const editProduct = createAsyncThunk(
+  "@products/editProduct",
+  async (editedProduct, { dispatch }) => {
+    await axios.patch(`${API}/${editedProduct.id}`, editedProduct);
+    dispatch(getProducts());
+  }
+);
