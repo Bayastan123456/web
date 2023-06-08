@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getOneProduct } from "./productsActions";
 
 const initialState = {
   products: [],
+  productDetails: {},
 };
 
 export const productsSlice = createSlice({
@@ -12,7 +14,11 @@ export const productsSlice = createSlice({
       state.products = action.payload;
     },
   },
-  // extraReducers:
+  extraReducers: (builder) => {
+    builder.addCase(getOneProduct.fulfilled, (state, action) => {
+      state.productDetails = action.payload;
+    });
+  },
 });
 
 export const { setProducts } = productsSlice.actions;
