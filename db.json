@@ -1,13 +1,6 @@
 {
   "products": [
     {
-      "title": "Experience Italy",
-      "price": "14.95",
-      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781838698102_600x.jpg?v=1682916208",
-      "descr": "asd",
-      "id": 1
-    },
-    {
       "title": "Japan",
       "price": "18.95",
       "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781788683814_200x.jpg?v=1666176503",
@@ -20,6 +13,20 @@
       "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781788680523_200x.jpg?v=1666176466",
       "descr": "asd",
       "id": 3
+    },
+    {
+      "title": "Coastal California",
+      "price": "14.99",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/coastal-california-travel-guide_200x.jpg?v=1667638354",
+      "descr": "Descr",
+      "id": 4
+    },
+    {
+      "title": "Ethiopia & Djibouti",
+      "price": "12.99",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/ethiopia-djibouti-travel-guide_200x.jpg?v=1667667711",
+      "descr": "Descrt",
+      "id": 5
     }
   ]
 }
