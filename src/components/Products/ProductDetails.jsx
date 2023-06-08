@@ -1,7 +1,7 @@
 import { Button, Divider, Stack, Typography } from "@mui/material";
 import Star from "@mui/icons-material/Star";
 import styled from "styled-components";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneProduct } from "../../store/products/productsActions";
@@ -24,21 +24,20 @@ function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { pruductDetails } = useSelector((state) => state.products);
+  const { productDetails } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getOneProduct(id));
   }, [id]);
 
-  console.log(pruductDetails);
-
+  console.log(productDetails);
   return (
     <Stack
       direction="row"
       spacing={15}
       sx={{ width: "100%", display: "flex", justifyContent: "center" }}
     >
-      <img src={pruductDetails?.image} alt="img" />
+      <img src={productDetails?.image} alt="img" />
 
       <div style={{ width: "520px" }}>
         <Typography
@@ -57,7 +56,7 @@ function ProductDetails() {
             marginTop: "6px",
           }}
         >
-          {pruductDetails?.title}
+          {productDetails?.title}
         </Typography>
 
         <Typography
@@ -84,7 +83,7 @@ function ProductDetails() {
           variant="body2"
           sx={{ fontSize: "24px", fontWeight: "600" }}
         >
-          {pruductDetails.price}
+          ${productDetails?.price} USD
         </Typography>
 
         <Stack direction="row">
@@ -105,9 +104,9 @@ function ProductDetails() {
         >
           <strong>
             Lonely Planet’s{" "}
-            <span style={{ fontStyle: "italic" }}>{pruductDetails?.title}</span>
+            <span style={{ fontStyle: "italic" }}>{productDetails?.title}</span>
           </strong>{" "}
-          {pruductDetails?.descr}
+          {productDetails?.descr}
         </Typography>
 
         <Typography

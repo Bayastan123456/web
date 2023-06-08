@@ -3,7 +3,7 @@ import { getOneProduct } from "./productsActions";
 
 const initialState = {
   products: [],
-  pruductDetails: {},
+  productDetails: null,
 };
 
 export const productsSlice = createSlice({
@@ -16,7 +16,7 @@ export const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getOneProduct.fulfilled, (state, action) => {
-      state.pruductDetails = action.payload;
+      state.productDetails = action.payload;
     });
   },
 });
