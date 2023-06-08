@@ -40,7 +40,14 @@ function ProductDetails() {
       spacing={15}
       sx={{ width: "100%", display: "flex", justifyContent: "center" }}
     >
-      <CardMedia>
+      <CardMedia
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          mr: "10vw",
+        }}
+      >
         <img src={productDetails?.image} alt="img" />
       </CardMedia>
 
