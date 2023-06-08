@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneProduct } from "../../store/products/productsActions";
+import ModalEdit from "../ModalEdit/ModalEdit";
 import { ADMIN } from "../../helpers/consts";
 
 const ColorButton = styled(Button)(() => ({
@@ -185,6 +186,7 @@ function ProductDetails() {
         <Stack direction="row" sx={{ flexWrap: "wrap", gap: "10px" }}>
           {user === ADMIN ? (
             <>
+              {" "}
               <ColorButton
                 variant="outlined"
                 sx={{
@@ -194,18 +196,7 @@ function ProductDetails() {
                   },
                 }}
               >
-                <Stack>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontSize: "16px",
-                      fontWeight: "600",
-                      color: "white",
-                    }}
-                  >
-                    Edit card
-                  </Typography>
-                </Stack>
+                <ModalEdit productDetails={productDetails} />
               </ColorButton>
               <ColorButton
                 variant="outlined"

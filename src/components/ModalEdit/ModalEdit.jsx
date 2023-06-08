@@ -1,5 +1,14 @@
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
-import React from "react";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const style = {
   position: "absolute",
   height: "500px",
@@ -13,13 +22,52 @@ const style = {
   p: 4,
 };
 
-const ModalEdit = () => {
-  const [open, setOpen] = React.useState(false);
+const ModalEdit = ({ productDetails }) => {
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [title, setTitle] = useState(productDetails.title);
+  const [price, setPrice] = useState(productDetails.price);
+  const [image, setImage] = useState(productDetails.image);
+  const [descr, setDescr] = useState(productDetails.descr);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleProduct = () => {
+    if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
+      alert("Заполните поля!");
+      return;
+    }
+    let newProduct = {
+      title,
+      price,
+      image,
+      descr,
+    };
+    // dispatch(addProduct(newProduct));
+    setTitle("");
+    setPrice("");
+    setImage("");
+    setDescr("");
+    navigate("/products");
+  };
+
   return (
     <Box sx={{ width: "100%" }}>
-      <Button onClick={handleOpen}>Edit</Button>
+      <Stack>
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: "16px",
+            fontWeight: "600",
+            color: "white",
+          }}
+          onClick={handleOpen}
+        >
+          Edit card
+        </Typography>
+      </Stack>
       <Modal
         open={open}
         onClose={handleClose}
@@ -43,10 +91,38 @@ const ModalEdit = () => {
             >
               Add your changes
             </Typography>
-            <TextField label="New Title" sx={{ width: "95%" }} />
-            <TextField label="New Price" sx={{ width: "95%" }} />
-            <TextField label="New Image" sx={{ width: "95%" }} />
-            <TextField label="New Description" sx={{ width: "95%" }} />
+            <TextField
+              label="New Title"
+              sx={{ width: "95%" }}
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+            <TextField
+              label="New Price"
+              sx={{ width: "95%" }}
+              value={price}
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+            />
+            <TextField
+              label="New Image"
+              sx={{ width: "95%" }}
+              value={image}
+              onChange={(e) => {
+                setImage(e.target.value);
+              }}
+            />
+            <TextField
+              label="New Description"
+              sx={{ width: "95%" }}
+              value={descr}
+              onChange={(e) => {
+                setDescr(e.target.value);
+              }}
+            />
             <Button sx={{ width: "95%", height: "50px" }} variant="contained">
               Save changes
             </Button>
