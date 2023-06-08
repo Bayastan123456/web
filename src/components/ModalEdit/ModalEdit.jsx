@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 const style = {
   position: "absolute",
   height: "500px",
@@ -20,7 +20,12 @@ const style = {
   p: 4,
 };
 
-const ModalEdit = () => {
+const ModalEdit = ({ productDetails }) => {
+  const [title, setTitle] = useState(productDetails.title);
+  const [price, setPrice] = useState(productDetails.price);
+  const [descr, setdescr] = useState(productDetails.descr);
+  const [image, setImage] = useState(productDetails.image);
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -62,10 +67,30 @@ const ModalEdit = () => {
             >
               Add your changes
             </Typography>
-            <TextField label="New Title" sx={{ width: "95%" }} />
-            <TextField label="New Price" sx={{ width: "95%" }} />
-            <TextField label="New Image" sx={{ width: "95%" }} />
-            <TextField label="New Description" sx={{ width: "95%" }} />
+            <TextField
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              label="New Title"
+              sx={{ width: "95%" }}
+            />
+            <TextField
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              label="New Price"
+              sx={{ width: "95%" }}
+            />
+            <TextField
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+              label="New Image"
+              sx={{ width: "95%" }}
+            />
+            <TextField
+              value={descr}
+              onChange={(e) => setdescr(e.target.value)}
+              label="New Description"
+              sx={{ width: "95%" }}
+            />
             <Button sx={{ width: "95%", height: "50px" }} variant="contained">
               Save changes
             </Button>
