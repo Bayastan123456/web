@@ -11,7 +11,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(authListener());
   }, []);
-  console.log(2);
   return (
     <div>
       Home

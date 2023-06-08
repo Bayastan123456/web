@@ -11,7 +11,6 @@ import { ADMIN } from "../helpers/consts";
 
 const MainRoutes = () => {
   const { user } = useSelector((state) => state.auth);
-
   const PUBLIC_ROUTES = [
     { link: "/", element: <HomePage />, id: 1 },
     { link: "/login", element: <LoginPage />, id: 2 },

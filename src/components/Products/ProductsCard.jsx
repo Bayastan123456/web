@@ -12,7 +12,6 @@ const ProductsCard = ({ item }) => {
     <div>
       <Card
         sx={{
-          minWidth: "15vw",
           maxWidth: "17vw",
           textAlign: "center",
           boxShadow: "0",
@@ -22,7 +21,7 @@ const ProductsCard = ({ item }) => {
           <CardMedia
             sx={{ marginTop: "10px" }}
             component="img"
-            height="100%"
+            maxHeight="100%"
             image={item.image}
             alt="Expiriance Italy"
           />

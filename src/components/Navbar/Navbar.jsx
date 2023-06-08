@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { ADMIN } from "../../helpers/consts";
 import { useSelector } from "react-redux";
+import ModalEdit from "../ModalEdit/ModalEdit";
 
 export default function Navbar() {
   const navigate = useNavigate();
