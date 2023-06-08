@@ -53,7 +53,6 @@ const ModalEdit = ({ productDetails }) => {
       alert("Заполните поля!");
       return;
     }
-    console.log(id);
     let editedProduct = {
       title,
       price,
