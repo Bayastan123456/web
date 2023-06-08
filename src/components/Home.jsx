@@ -8,9 +8,6 @@ const Home = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    dispatch(authListener());
-  }, []);
   return (
     <div>
       Home
