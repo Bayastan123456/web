@@ -1,18 +1,11 @@
 {
   "products": [
     {
-      "title": "Japan",
+      "title": "asd",
       "price": "18.95",
       "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781788683814_200x.jpg?v=1666176503",
       "descr": "is your passport to the most relevant, up-to-date advice on what tosee and skip, and what hidden",
       "id": 2
-    },
-    {
-      "title": "France",
-      "price": "18.95",
-      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781788680523_200x.jpg?v=1666176466",
-      "descr": "is your passport to the most relevant, up-to-date advice on what tosee and skip, and what hidden",
-      "id": 3
     },
     {
       "title": "Coastal California",

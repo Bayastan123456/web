@@ -26,3 +26,19 @@ export const getOneProduct = createAsyncThunk(
     return data;
   }
 );
+
+export const editProduct = createAsyncThunk(
+  "@products/editProduct",
+  async (editedProduct, { dispatch }) => {
+    await axios.patch(`${API}/${editedProduct.id}`, editedProduct);
+    dispatch(getProducts());
+  }
+);
+
+export const deleteProduct = createAsyncThunk(
+  "@products/deleteProduct",
+  async (id, { dispatch }) => {
+    await axios.delete(`${API}/${id}`);
+    dispatch(getProducts());
+  }
+);
