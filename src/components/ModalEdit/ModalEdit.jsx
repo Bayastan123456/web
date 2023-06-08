@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 const style = {
   position: "absolute",
   height: "500px",
@@ -20,10 +20,16 @@ const style = {
   p: 4,
 };
 
-const ModalEdit = () => {
-  const [open, setOpen] = React.useState(false);
+const ModalEdit = ({ productDetails }) => {
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [title, setTitle] = useState(productDetails.title);
+  const [price, setPrice] = useState(productDetails.price);
+  const [image, setImage] = useState(productDetails.image);
+  const [descr, setDescr] = useState(productDetails.descr);
+
   return (
     <Box sx={{ width: "100%" }}>
       <Stack>
@@ -62,10 +68,38 @@ const ModalEdit = () => {
             >
               Add your changes
             </Typography>
-            <TextField label="New Title" sx={{ width: "95%" }} />
-            <TextField label="New Price" sx={{ width: "95%" }} />
-            <TextField label="New Image" sx={{ width: "95%" }} />
-            <TextField label="New Description" sx={{ width: "95%" }} />
+            <TextField
+              label="New Title"
+              sx={{ width: "95%" }}
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+            <TextField
+              label="New Price"
+              sx={{ width: "95%" }}
+              value={price}
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+            />
+            <TextField
+              label="New Image"
+              sx={{ width: "95%" }}
+              value={image}
+              onChange={(e) => {
+                setImage(e.target.value);
+              }}
+            />
+            <TextField
+              label="New Description"
+              sx={{ width: "95%" }}
+              value={descr}
+              onChange={(e) => {
+                setDescr(e.target.value);
+              }}
+            />
             <Button sx={{ width: "95%", height: "50px" }} variant="contained">
               Save changes
             </Button>
