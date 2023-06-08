@@ -12,7 +12,6 @@ const Admin = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleProduct = () => {
     if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
       alert("Заполните поля!");

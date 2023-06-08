@@ -64,6 +64,7 @@ export default function Navbar() {
             >
               Products
             </Typography>
+
             {user === ADMIN && (
               <Typography
                 onClick={() => navigate("/admin")}
