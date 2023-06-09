@@ -28,6 +28,7 @@ import { useNavigate } from "react-router";
 import ProductsList from "../components/Products/ProductsList";
 import { Container, Stack } from "@mui/system";
 import ProductDetails from "../components/Products/ProductDetails";
+import ImageAnimation from "../components/Products/ProductSlide";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -194,13 +195,13 @@ const HomePage = () => {
           >
             <ToggleButton
               sx={{ border: "none", borderBottom: "solid 5px" }}
-              value="web"
+              value="Experience"
             >
               EXPERIENCE
             </ToggleButton>
             <ToggleButton
               sx={{ border: "none", borderBottom: "solid 5px" }}
-              value="android"
+              value="EBOOKS"
             >
               EBOOKS
             </ToggleButton>
@@ -218,112 +219,7 @@ const HomePage = () => {
           </Button>
         </Box>
       </Box>
-
-      <Box
-        marginLeft={"1%"}
-        marginRight={"1%"}
-        maxHeight={"100%"}
-        maxWidth={"100%"}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-        }}
-      >
-        <Box margin={"1%"} maxHeight={"100%"} maxWidth={"100%"}>
-          <Typography
-            margin={"1%"}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            SHOP
-          </Typography>
-          <Typography
-            marginTop={"3%"}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-            }}
-            variant="h4"
-          >
-            Our New Releases
-          </Typography>
-          <Typography
-            margin={"1%"}
-            marginTop={"3%"}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-            }}
-          >
-            Shop the collection of latest releases from Lonely Planet. Travel
-            guides, planning maps, experience guides.
-          </Typography>
-          <Typography
-            marginTop={"5%"}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              onClick={() => navigate("/products")}
-              margin={"1%"}
-              variant="contained"
-              sx={{
-                borderRadius: "18vw",
-                width: "10vw",
-              }}
-            >
-              Shop now
-            </Button>
-          </Typography>
-
-          <Box
-            marginTop={"6%"}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Button>NEW</Button>
-            <Button>TRENDING DESTINATIONS</Button>
-          </Box>
-        </Box>
-
-        <Box sx={{ position: "relative" }}>
-          <Box
-            zIndex={"-1"}
-            position="absolute"
-            backgroundColor="blue"
-            width={"500px"}
-            height={"600px"}
-            display="flex"
-            alignContent={"flex-end"}
-          ></Box>
-          <Box
-            marginTop={"10%"}
-            marginRight={"5%"}
-            sx={{ position: "relative", right: "50px", zIndex: "1" }}
-          >
-            <img
-              width={"70%"}
-              height={"70%"}
-              src="https://cdn.shopify.com/s/files/1/0650/8521/0875/files/Screenshot_2_492x.png?v=1671624485"
-              alt=""
-            />
-          </Box>
-        </Box>
-      </Box>
+      <ImageAnimation />
       <ProductDetails />
       <Box sx={{ mb: "16vh", mt: "15vh" }}>
         <Typography variant="h3" textAlign="center" fontWeight="bold">
@@ -351,7 +247,7 @@ const HomePage = () => {
         </Box>
       </Box>
 
-      <Box>
+      <Box sx={{ padding: "auto", margin: "auto" }}>
         <Typography variant="h3" fontWeight={"600"} textAlign={"center"}>
           Which guidebook is right for me?
         </Typography>
@@ -742,7 +638,7 @@ const HomePage = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-around",
+              justifyContent: "space-between",
             }}
           >
             <Box textAlign={"center"} width={"40%"}>
