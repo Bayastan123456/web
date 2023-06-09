@@ -28,7 +28,7 @@ export const getOneProduct = createAsyncThunk(
 );
 
 export const editProduct = createAsyncThunk(
-  "@products/editProduct",
+  "@product/editProduct",
   async (editedProduct, { dispatch }) => {
     await axios.patch(`${API}/${editedProduct.id}`, editedProduct);
     dispatch(getProducts());

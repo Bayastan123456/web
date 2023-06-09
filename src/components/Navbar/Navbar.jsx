@@ -5,15 +5,17 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
-import { styled } from "@mui/material/styles";
 import { ADMIN } from "../../helpers/consts";
 import { useDispatch, useSelector } from "react-redux";
-import { authListener } from "../../store/auth/authActions";
-import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
-import CloseIcon from "@mui/icons-material/Close";
+import { authListener, handleLogout } from "../../store/auth/authActions";
+import { clearInputs } from "../../store/auth/authSlice";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
+
+import LogoutIcon from "@mui/icons-material/Logout";
+import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
+import CloseIcon from "@mui/icons-material/LocalGroceryStore";
+import { Button } from "@mui/material";
+import { Divider } from "@mui/material";
 
 export default function Navbar() {
   // ====================================
@@ -248,15 +250,10 @@ export default function Navbar() {
     };
   }, [scrolled]);
 
-  const NavbarContainer = styled(AppBar)(({ theme }) => ({
-    backgroundColor: scrolled ? "#ff0000" : "transparent",
-    transition: "background-color 0.3s ease",
-  }));
-
-  const StyledTypography = styled(Typography)(({ theme }) => ({
-    flexGrow: 1,
-    display: { xs: "none", sm: "block" },
-  }));
+  // const NavbarContainer = styled(AppBar)(({ theme }) => ({
+  //   backgroundColor: scrolled ? "#ff0000" : "transparent",
+  //   transition: "background-color 0.3s ease",
+  // }));
 
   useEffect(() => {
     dispatch(authListener());
@@ -264,11 +261,41 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1, m: 0 }}>
-      <NavbarContainer
-        position="sticky"
-        sx={{ backgroundColor: "white", m: 0 }}
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: !scrolled
+            ? "rgba(255,255,255,0)"
+            : "rgba(255,255,255,1)",
+          boxShadow: 0,
+          m: 0,
+          // opacity: !scrolled ? 0 : 1,
+        }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        {!scrolled && (
+          <Box
+            sx={{
+              width: "100%",
+              backgroundColor: "black",
+              color: "white",
+              height: "40px",
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography sx={{ fontSize: "12px" }}>
+              FREE SHIPPING ON ALL ORDERS!
+            </Typography>
+          </Box>
+        )}
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <Box
             sx={{
               width: "20%",
@@ -313,37 +340,49 @@ export default function Navbar() {
               onClick={() => navigate("/")}
             />
           </Box>
-          <Box
-            sx={{
-              width: "20%",
-              display: "flex",
-              justifyContent: "space-around",
-            }}
-          >
-            <LoginIcon color="primary" sx={{ paddingTop: "6px" }} />
+          <Box sx={{ width: "20%" }}>
+            {/* <ShoppingCartIcon color="primary" /> */}
+            {user ? (
+              <LogoutIcon
+                sx={{ paddingTop: "6px" }}
+                color="primary"
+                onClick={() => {
+                  dispatch(handleLogout(navigate));
+                  dispatch(clearInputs());
+                }}
+              />
+            ) : (
+              <LoginIcon
+                color="primary"
+                onClick={() => {
+                  navigate("/login");
+                  dispatch(clearInputs());
+                }}
+              />
+            )}
+          </Box>
 
-            <div>
-              {["right"].map((anchor) => (
-                <React.Fragment key={anchor}>
-                  <Button onClick={toggleDrawer(anchor, true)}>
-                    <LocalGroceryStoreIcon />
-                  </Button>
-                  <Drawer
-                    anchor={anchor}
-                    open={state[anchor]}
-                    onClose={toggleDrawer(anchor, false)}
-                  >
-                    {list(anchor)}
-                  </Drawer>
-                </React.Fragment>
-              ))}
-            </div>
+          <Box>
+            {["right"].map((anchor) => (
+              <React.Fragment key={anchor}>
+                <Button onClick={toggleDrawer(anchor, true)} variant="text">
+                  <LocalGroceryStoreIcon />
+                </Button>
+                <Drawer
+                  anchor={anchor}
+                  open={state[anchor]}
+                  onClose={toggleDrawer(anchor, false)}
+                >
+                  {list(anchor)}
+                </Drawer>
+              </React.Fragment>
+            ))}
           </Box>
           {/* <Box sx={{ width: "20%" }}>
             <LoginIcon color="primary" />
           </Box> */}
         </Toolbar>
-      </NavbarContainer>
+      </AppBar>
     </Box>
   );
 }

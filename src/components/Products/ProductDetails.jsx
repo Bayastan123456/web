@@ -1,4 +1,4 @@
-import { Button, Divider, Stack, Typography } from "@mui/material";
+import { Button, CardMedia, Divider, Stack, Typography } from "@mui/material";
 import Star from "@mui/icons-material/Star";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
@@ -28,7 +28,7 @@ const ColorButton = styled(Button)(() => ({
 function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { productDetails } = useSelector((state) => state.products);
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -37,14 +37,31 @@ function ProductDetails() {
     dispatch(getOneProduct(id));
   }, [id]);
 
-  console.log(productDetails);
   return (
     <Stack
       direction="row"
       spacing={15}
-      sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+      sx={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        mt: "20vh",
+      }}
     >
-      <img src={productDetails?.image} alt="img" />
+      <CardMedia
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          mr: "10vw",
+        }}
+      >
+        <img
+          style={{ maxHeight: "65vh" }}
+          src={productDetails?.image}
+          alt="img"
+        />
+      </CardMedia>
 
       <div style={{ width: "520px" }}>
         <Typography
@@ -195,6 +212,7 @@ function ProductDetails() {
                 variant="outlined"
                 sx={{
                   backgroundColor: "#0057D9",
+                  border: "none !important",
                   "&:hover": {
                     backgroundColor: "#0057D9 !important",
                   },
@@ -206,6 +224,8 @@ function ProductDetails() {
                 variant="outlined"
                 sx={{
                   backgroundColor: " rgba(98, 60, 150, 0.932)",
+                  border: "none !important",
+                  height: "44px",
 
                   "&:hover": {
                     backgroundColor: "rgba(98, 60, 150, 0.932) !important",
@@ -234,7 +254,10 @@ function ProductDetails() {
             <ColorButton
               variant="outlined"
               sx={{
+                border: "none !important",
                 backgroundColor: "#0057D9",
+                height: "44px",
+
                 "&:hover": {
                   backgroundColor: "#0057D9 !important",
                 },
