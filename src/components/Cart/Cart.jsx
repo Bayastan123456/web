@@ -1,42 +1,17 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import { Typography } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import { Box, Button, Divider, Typography } from "@mui/material";
+import React from "react";
+
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
-import Navbar from "../Navbar/Navbar";
+import CloseIcon from "@mui/icons-material/LocalGroceryStore";
 
-export default function SwipeableTemporaryDrawer() {
-  const [state, setState] = React.useState({
-    right: false,
-    paymentFormOpen: false,
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event &&
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-
-  const [showPaymentForm, setShowPaymentForm] = React.useState(false);
-
-  const openPaymentForm = () => {
-    setShowPaymentForm(true);
-  };
-
-  const closePaymentForm = () => {
-    setShowPaymentForm(false);
-  };
-
-  const list = (anchor) => (
+const Cart = ({
+  anchor,
+  openPaymentForm,
+  closePaymentForm,
+  toggleDrawer,
+  showPaymentForm,
+}) => {
+  return (
     <Box
       sx={{ width: 500 }}
       role="dialog"
@@ -215,24 +190,6 @@ export default function SwipeableTemporaryDrawer() {
       </Box>
     </Box>
   );
+};
 
-  return (
-    <Box sx={{ width: "50%", maxWidth: 500 }}>
-      {["right"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>Cart</Button>
-          <SwipeableDrawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
-            PaperProps={{ sx: { width: "100%", maxWidth: 500 } }}
-          >
-            {list(anchor)}
-            <Navbar toggleDrawer={toggleDrawer} anchor={anchor} />
-          </SwipeableDrawer>
-        </React.Fragment>
-      ))}
-    </Box>
-  );
-}
+export default Cart;
