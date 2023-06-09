@@ -80,7 +80,12 @@ export default function Navbar() {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1, m: 0 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        m: 0,
+      }}
+    >
       <AppBar
         position="fixed"
         sx={{
@@ -90,6 +95,8 @@ export default function Navbar() {
           boxShadow: 0,
           m: 0,
           // opacity: !scrolled ? 0 : 1,
+          display: "flex",
+          justifyContent: "space-beetwen",
         }}
       >
         {!scrolled && (
@@ -102,7 +109,6 @@ export default function Navbar() {
               textAlign: "center",
               display: "flex",
               justifyContent: "center",
-              alignItems: "center",
             }}
           >
             <Typography sx={{ fontSize: "12px" }}>
@@ -113,14 +119,14 @@ export default function Navbar() {
         <Toolbar
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
           }}
         >
           <Box
             sx={{
-              width: "20%",
+              width: "30%",
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
             }}
           >
             <Typography style={{ color: "black", cursor: "pointer" }}>
@@ -152,7 +158,7 @@ export default function Navbar() {
           >
             <img
               style={{
-                width: "40%",
+                width: "50%",
                 cursor: "pointer",
               }}
               src="https://cdn.shopify.com/s/files/1/0650/8521/0875/files/color_logo_390x.png?v=1663667137"
@@ -162,8 +168,8 @@ export default function Navbar() {
           </Box>
           {/* start way to login and register, need imports:
            */}
-          <Box sx={{ width: "20%", display: "flex", gap: "5px" }}>
-            {/* {user ? (
+          {/* <Box sx={{ width: "20%", display: "flex", gap: "5px" }}> */}
+          {/* {user ? (
               <>
                 <Typography color="black">Log out</Typography>
                 <LogoutIcon
@@ -186,49 +192,60 @@ export default function Navbar() {
                 />
               </>
             )} */}
-          </Box>
-          <Box sx={{ width: "20%" }}>
-            {/* <ShoppingCartIcon color="primary" /> */}
-            {user ? (
-              <LogoutIcon
-                color="primary"
-                onClick={() => {
-                  dispatch(handleLogout(navigate));
-                  dispatch(clearInputs());
-                }}
-              />
-            ) : (
-              <LoginIcon
-                color="primary"
-                onClick={() => {
-                  navigate("/login");
-                  dispatch(clearInputs());
-                }}
-              />
-            )}
-          </Box>
+          {/* </Box> */}
 
-          <Box>
-            {["right"].map((anchor) => (
-              <React.Fragment key={anchor}>
-                <Button onClick={toggleDrawer(anchor, true)} variant="text">
-                  <LocalGroceryStoreIcon />
-                </Button>
-                <Drawer
-                  anchor={anchor}
-                  open={state[anchor]}
-                  onClose={toggleDrawer(anchor, false)}
-                >
-                  <Cart
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-around",
+              width: "30%",
+            }}
+          >
+            <Box sx={{}}>
+              {/* <ShoppingCartIcon color="primary" /> */}
+              {user ? (
+                <LogoutIcon
+                  sx={{ marginTop: "6px" }}
+                  color="primary"
+                  onClick={() => {
+                    dispatch(handleLogout(navigate));
+                    dispatch(clearInputs());
+                  }}
+                />
+              ) : (
+                <LoginIcon
+                  sx={{ marginTop: "6px" }}
+                  color="primary"
+                  onClick={() => {
+                    navigate("/login");
+                    dispatch(clearInputs());
+                  }}
+                />
+              )}
+            </Box>
+            <Box>
+              {" "}
+              {["right"].map((anchor) => (
+                <React.Fragment key={anchor}>
+                  <Button onClick={toggleDrawer(anchor, true)} variant="text">
+                    <LocalGroceryStoreIcon />
+                  </Button>
+                  <Drawer
                     anchor={anchor}
-                    openPaymentForm={openPaymentForm}
-                    closePaymentForm={closePaymentForm}
-                    toggleDrawer={toggleDrawer}
-                    showPaymentForm={showPaymentForm}
-                  />
-                </Drawer>
-              </React.Fragment>
-            ))}
+                    open={state[anchor]}
+                    onClose={toggleDrawer(anchor, false)}
+                  >
+                    <Cart
+                      anchor={anchor}
+                      openPaymentForm={openPaymentForm}
+                      closePaymentForm={closePaymentForm}
+                      toggleDrawer={toggleDrawer}
+                      showPaymentForm={showPaymentForm}
+                    />
+                  </Drawer>
+                </React.Fragment>
+              ))}
+            </Box>
           </Box>
           {/* end way */}
         </Toolbar>
