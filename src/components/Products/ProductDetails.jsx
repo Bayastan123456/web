@@ -1,7 +1,7 @@
 import { Button, CardMedia, Divider, Stack, Typography } from "@mui/material";
 import Star from "@mui/icons-material/Star";
 import styled from "styled-components";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -26,7 +26,6 @@ function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
   const { productDetails } = useSelector((state) => state.products);
   const { user } = useSelector((state) => state.auth);
 
@@ -43,7 +42,6 @@ function ProductDetails() {
         totalPrice: 0,
       };
     }
-
     let newProduct = {
       item: product,
       count: 1,
@@ -236,7 +234,7 @@ function ProductDetails() {
         <Divider sx={{ marginBottom: "40px" }} />
 
         <Stack direction="row" sx={{ flexWrap: "wrap", gap: "10px" }}>
-          {user === ADMIN && location.pathname !== "/" ? (
+          {user === ADMIN ? (
             <>
               {" "}
               <ColorButton
