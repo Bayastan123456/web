@@ -10,6 +10,8 @@ import {
 } from "../../store/products/productsActions";
 import ModalEdit from "../ModalEdit/ModalEdit";
 import { ADMIN } from "../../helpers/consts";
+import { calcTotalPrice } from "../../helpers/functions";
+import { getCart } from "../../store/cart/cartSlice";
 
 const ColorButton = styled(Button)(() => ({
   color: "#000 !important",
@@ -31,6 +33,38 @@ function ProductDetails() {
   useEffect(() => {
     dispatch(getOneProduct(id));
   }, [id]);
+
+  const addProductToCart = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+
+    if (!cart) {
+      cart = {
+        products: [],
+        totalPrice: 0,
+      };
+    }
+
+    let newProduct = {
+      item: product,
+      count: 1,
+      subPrice: +product.price,
+    };
+
+    let productToFind = cart.products.filter((elem) => elem.id === product.id);
+
+    if (productToFind.length == 0) {
+      cart.products.push(newProduct);
+    } else {
+      cart.products = cart.products.filter(
+        (elem) => elem.item.id !== product.id
+      );
+    }
+
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    dispatch(getCart(cart.products));
+  };
 
   return (
     <Stack
@@ -252,11 +286,11 @@ function ProductDetails() {
                 border: "none !important",
                 backgroundColor: "#0057D9",
                 height: "44px",
-
                 "&:hover": {
                   backgroundColor: "#0057D9 !important",
                 },
               }}
+              onClick={() => addProductToCart(productDetails)}
             >
               <Stack>
                 <Typography

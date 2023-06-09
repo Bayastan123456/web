@@ -1,8 +1,10 @@
 import { Box, Button, Divider, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CloseIcon from "@mui/icons-material/LocalGroceryStore";
+import { useDispatch, useSelector } from "react-redux";
+import { getCart } from "../../store/cart/cartSlice";
 
 const Cart = ({
   anchor,
@@ -11,6 +13,23 @@ const Cart = ({
   toggleDrawer,
   showPaymentForm,
 }) => {
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.cart.cart);
+  console.log(products);
+
+  useEffect(() => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+
+    if (!cart) {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify({ products: [], totalPrice: 0 })
+      );
+      cart = { products: [], totalPrice: 0 };
+    }
+    dispatch(getCart(cart));
+  }, []);
+
   return (
     <Box
       sx={{ width: 500 }}
