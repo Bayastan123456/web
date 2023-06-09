@@ -18,11 +18,6 @@ const ColorButton = styled(Button)(() => ({
   borderRadius: "50px !important",
   padding: "7px 18px !important",
   width: "216px !important",
-  "&:hover": {
-    borderColor: "#000 !important",
-    color: "#000 !important",
-    backgroundColor: "#fff !important",
-  },
 }));
 
 function ProductDetails() {
