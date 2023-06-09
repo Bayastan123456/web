@@ -4,7 +4,10 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getOneProduct } from "../../store/products/productsActions";
+import {
+  deleteProduct,
+  getOneProduct,
+} from "../../store/products/productsActions";
 import ModalEdit from "../ModalEdit/ModalEdit";
 import { ADMIN } from "../../helpers/consts";
 
@@ -28,6 +31,7 @@ function ProductDetails() {
 
   const { productDetails } = useSelector((state) => state.products);
   const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getOneProduct(id));
@@ -206,6 +210,10 @@ function ProductDetails() {
                   "&:hover": {
                     backgroundColor: "rgba(98, 60, 150, 0.932) !important",
                   },
+                }}
+                onClick={() => {
+                  dispatch(deleteProduct(id));
+                  navigate("/products");
                 }}
               >
                 <Stack>

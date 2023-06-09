@@ -18,7 +18,8 @@ const MainRoutes = () => {
     { link: "/register", element: <RegisterPage />, id: 3 },
     { link: "/details/:id", element: <ProductDetails />, id: 4 },
     { link: "/products", element: <ProductsPage />, id: 5 },
-    { link: "*", element: <NotFoundPage />, id: 6 },
+
+    { link: "*", element: <NotFoundPage />, id: 7 },
   ];
 
   const PRIVATE_ROUTES = [{ link: "/admin", element: <AdminPage />, id: 1 }];
