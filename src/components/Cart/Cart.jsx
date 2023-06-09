@@ -1,6 +1,5 @@
 import { Box, Button, Divider, Typography } from "@mui/material";
 import React, { useEffect } from "react";
-
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CloseIcon from "@mui/icons-material/LocalGroceryStore";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +15,6 @@ const Cart = ({
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.cart.cart);
   console.log(products);
-
   useEffect(() => {
     let cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -28,8 +26,8 @@ const Cart = ({
       cart = { products: [], totalPrice: 0 };
     }
     dispatch(getCart(cart));
+    console.log(cart);
   }, []);
-
   return (
     <Box
       sx={{ width: 500 }}
@@ -103,86 +101,92 @@ const Cart = ({
           </Button>
         </Box>
       ) : (
-        <Box
-          sx={{
-            justifyContent: "space-around",
-            display: "flex",
-            marginTop: "2%",
-            marginLeft: "4%",
-            marginRight: "10%",
-          }}
-        >
-          <Box sx={{ width: "25%" }}>
-            {" "}
-            <img
-              style={{
-                width: "100%",
-              }}
-              src="https://cdn.shopify.com/s/files/1/0650/8521/0875/products/9781838694746_240x.jpg?v=1666176450"
-              alt=""
-            />
-          </Box>
-
-          <Box sx={{ width: "40%", display: "flex", flexDirection: "column" }}>
-            <Typography component="span" sx={{ fontWeight: "bold" }}>
-              Experience Japan
-            </Typography>
-            <Typography component="span" sx={{}}>
-              Book
-            </Typography>
-
+        <>
+          {products?.map((elem) => (
             <Box
               sx={{
-                border: "2px black solid",
-                width: "80px",
-                height: "30px",
+                justifyContent: "space-around",
                 display: "flex",
-                borderRadius: "50px",
-                marginLeft: "5%",
-                overflow: "hidden",
+                marginTop: "2%",
+                marginLeft: "4%",
+                marginRight: "10%",
               }}
             >
-              <Typography
-                component="button"
-                sx={{
-                  height: "100%",
-                  width: "30%",
-                  background: "white",
-                  border: "none",
-                  fontSize: "20px",
-                  color: "black",
-                }}
+              <Box sx={{ width: "25%" }}>
+                {" "}
+                <img
+                  style={{
+                    width: "100%",
+                  }}
+                  src={elem.item.image}
+                  alt=""
+                />
+              </Box>
+
+              <Box
+                sx={{ width: "40%", display: "flex", flexDirection: "column" }}
               >
-                -
-              </Typography>
-              <Typography
-                component="input"
-                placeholder="1"
-                sx={{
-                  width: "30px",
-                  textAlign: "center",
-                  border: "none",
-                }}
-              ></Typography>
-              <Typography
-                component="button"
-                sx={{
-                  height: "100%",
-                  width: "30%",
-                  background: "white",
-                  border: "none",
-                  fontSize: "20px",
-                  color: "black ",
-                }}
-              >
-                +
-              </Typography>
+                <Typography component="span" sx={{ fontWeight: "bold" }}>
+                  Experience {elem.item.title}
+                </Typography>
+                <Typography component="span" sx={{}}>
+                  Book
+                </Typography>
+
+                <Box
+                  sx={{
+                    border: "2px black solid",
+                    width: "80px",
+                    height: "30px",
+                    display: "flex",
+                    borderRadius: "50px",
+                    marginLeft: "5%",
+                    overflow: "hidden",
+                  }}
+                >
+                  <Typography
+                    component="button"
+                    sx={{
+                      height: "100%",
+                      width: "30%",
+                      background: "white",
+                      border: "none",
+                      fontSize: "20px",
+                      color: "black",
+                    }}
+                  >
+                    -
+                  </Typography>
+                  <Typography
+                    component="input"
+                    placeholder="1"
+                    sx={{
+                      width: "30px",
+                      textAlign: "center",
+                      border: "none",
+                    }}
+                  ></Typography>
+                  <Typography
+                    component="button"
+                    sx={{
+                      height: "100%",
+                      width: "30%",
+                      background: "white",
+                      border: "none",
+                      fontSize: "20px",
+                      color: "black ",
+                    }}
+                  >
+                    +
+                  </Typography>
+                </Box>
+              </Box>
+              <Box>
+                <Typography>${elem.item.price}</Typography>
+              </Box>
             </Box>
-          </Box>
-          <Box>
-            <Typography>$49.98</Typography>
-          </Box>
-        </Box>
+          ))}
+        </>
       )}
 
       <Box sx={{ marginTop: "10%", marginLeft: "9%" }}>
