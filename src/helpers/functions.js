@@ -3,12 +3,10 @@ export const getCountProductsInCart = () => {
   return cart ? cart.products.length : 0;
 };
 
-export const calcSubPrice = (product) => {
-  return +product.count * product.item.price;
-};
+export const calcSubPrice = (product) => +product.count * product.item.price;
 
 export const calcTotalPrice = (products) => {
-  return products.reducer((acc, curr) => {
+  return products.reduce((acc, curr) => {
     return (acc += curr.subPrice);
   }, 0);
 };
