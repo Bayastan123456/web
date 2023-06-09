@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCountProducstInCart } from "../../helpers/functions";
+import { getCountProductsInCart } from "../../helpers/functions";
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem("cart")),
-  cartLength: getCountProducstInCart(),
+  cartLength: getCountProductsInCart(),
 };
 
 export const cartSlice = createSlice({
@@ -16,5 +16,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const cartReducer = cartSlice.reducer;
 export const { getCart } = cartSlice.actions;
+
+export const cartReducer = cartSlice.reducer;
