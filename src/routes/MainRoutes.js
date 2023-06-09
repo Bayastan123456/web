@@ -16,8 +16,8 @@ const MainRoutes = () => {
     { link: "/", element: <HomePage />, id: 1 },
     { link: "/login", element: <LoginPage />, id: 2 },
     { link: "/register", element: <RegisterPage />, id: 3 },
-    { link: "/details/:id", element: <ProductDetails />, id: 4 },
-    { link: "/products", element: <ProductsPage />, id: 5 },
+    { link: "/products", element: <ProductsPage />, id: 4 },
+    { link: "/details/:id", element: <ProductDetails />, id: 5 },
     { link: "*", element: <NotFoundPage />, id: 6 },
   ];
 

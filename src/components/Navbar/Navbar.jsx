@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { authListener, handleLogout } from "../../store/auth/authActions";
 import { clearInputs } from "../../store/auth/authSlice";
 import Drawer from "@mui/material/Drawer";
-
 import LogoutIcon from "@mui/icons-material/Logout";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CloseIcon from "@mui/icons-material/LocalGroceryStore";
@@ -340,6 +339,33 @@ export default function Navbar() {
               onClick={() => navigate("/")}
             />
           </Box>
+          {/* start way to login and register, need imports:
+           */}
+          <Box sx={{ width: "20%", display: "flex", gap: "5px" }}>
+            {user ? (
+              <>
+                <Typography color="black">Log out</Typography>
+                <LogoutIcon
+                  color="primary"
+                  onClick={() => {
+                    dispatch(handleLogout(navigate));
+                    dispatch(clearInputs());
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <Typography color="black">Sign up</Typography>
+                <LoginIcon
+                  color="primary"
+                  onClick={() => {
+                    navigate("/register");
+                    dispatch(clearInputs());
+                  }}
+                />
+              </>
+            )}
+          </Box>
           <Box sx={{ width: "20%" }}>
             {/* <ShoppingCartIcon color="primary" /> */}
             {user ? (
@@ -377,6 +403,7 @@ export default function Navbar() {
               </React.Fragment>
             ))}
           </Box>
+          {/* end way */}
         </Toolbar>
       </AppBar>
     </Box>

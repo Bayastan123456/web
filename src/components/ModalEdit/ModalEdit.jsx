@@ -35,6 +35,12 @@ const ModalEdit = ({ productDetails }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // const { productDetails } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(getOneProduct(id));
+  }, [id]);
+
   const [title, setTitle] = useState(productDetails.title);
   const [price, setPrice] = useState(productDetails.price);
   const [image, setImage] = useState(productDetails.image);
@@ -113,33 +119,25 @@ const ModalEdit = ({ productDetails }) => {
               label="New Title"
               sx={{ width: "95%" }}
               value={title}
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <TextField
               label="New Price"
               sx={{ width: "95%" }}
               value={price}
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
+              onChange={(e) => setPrice(e.target.value)}
             />
             <TextField
               label="New Image"
               sx={{ width: "95%" }}
               value={image}
-              onChange={(e) => {
-                setImage(e.target.value);
-              }}
+              onChange={(e) => setImage(e.target.value)}
             />
             <TextField
               label="New Description"
               sx={{ width: "95%" }}
               value={descr}
-              onChange={(e) => {
-                setDescr(e.target.value);
-              }}
+              onChange={(e) => setDescr(e.target.value)}
             />
             <Button
               onClick={handleEdit}
