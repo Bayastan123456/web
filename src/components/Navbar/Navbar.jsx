@@ -340,11 +340,17 @@ export default function Navbar() {
               onClick={() => navigate("/")}
             />
           </Box>
-          <Box sx={{ width: "20%" }}>
+          <Box
+            sx={{
+              width: "20%",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
             {/* <ShoppingCartIcon color="primary" /> */}
             {user ? (
               <LogoutIcon
-                sx={{ paddingTop: "6px" }}
+                sx={{ paddingTop: "6px", marginTop: "6px" }}
                 color="primary"
                 onClick={() => {
                   dispatch(handleLogout(navigate));
@@ -353,6 +359,7 @@ export default function Navbar() {
               />
             ) : (
               <LoginIcon
+                sx={{ marginTop: "6px" }}
                 color="primary"
                 onClick={() => {
                   navigate("/login");
@@ -360,24 +367,24 @@ export default function Navbar() {
                 }}
               />
             )}
+            <Box>
+              {["right"].map((anchor) => (
+                <React.Fragment key={anchor}>
+                  <Button onClick={toggleDrawer(anchor, true)} variant="text">
+                    <LocalGroceryStoreIcon />
+                  </Button>
+                  <Drawer
+                    anchor={anchor}
+                    open={state[anchor]}
+                    onClose={toggleDrawer(anchor, false)}
+                  >
+                    {list(anchor)}
+                  </Drawer>
+                </React.Fragment>
+              ))}
+            </Box>
           </Box>
 
-          <Box>
-            {["right"].map((anchor) => (
-              <React.Fragment key={anchor}>
-                <Button onClick={toggleDrawer(anchor, true)} variant="text">
-                  <LocalGroceryStoreIcon />
-                </Button>
-                <Drawer
-                  anchor={anchor}
-                  open={state[anchor]}
-                  onClose={toggleDrawer(anchor, false)}
-                >
-                  {list(anchor)}
-                </Drawer>
-              </React.Fragment>
-            ))}
-          </Box>
           {/* <Box sx={{ width: "20%" }}>
             <LoginIcon color="primary" />
           </Box> */}

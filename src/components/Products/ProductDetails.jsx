@@ -28,7 +28,6 @@ const ColorButton = styled(Button)(() => ({
 function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { productDetails } = useSelector((state) => state.products);
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
