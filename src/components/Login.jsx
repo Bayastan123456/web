@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setEmail, setPassword } from "../store/auth/authSlice";
 import { handleLogin } from "../store/auth/authActions";
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 const Login = () => {
   const { email, password, emailError, passwordError } = useSelector(
@@ -180,6 +187,15 @@ const Login = () => {
             Login
           </Button>
         </Box>
+        <Link
+          className="links"
+          sx={{ color: "black" }}
+          href="#"
+          variant="body2"
+          onClick={() => navigate("/register")}
+        >
+          {"Don't have an account? Register now"}
+        </Link>
       </Container>
     </Box>
   );
