@@ -53,7 +53,9 @@ function ProductDetails() {
     if (productToFind.length == 0) {
       cart.products.push(newProduct);
     } else {
-      cart.products = cart.products.filter((elem) => elem.id !== product.id);
+      cart.products = cart.products.filter(
+        (elem) => elem.item.id !== product.id
+      );
     }
 
     cart.totalPrice = calcTotalPrice(cart.products);
@@ -282,14 +284,11 @@ function ProductDetails() {
                 border: "none !important",
                 backgroundColor: "#0057D9",
                 height: "44px",
-
                 "&:hover": {
                   backgroundColor: "#0057D9 !important",
                 },
               }}
-              onClick={() => {
-                addProductToCart(productDetails);
-              }}
+              onClick={() => addProductToCart(productDetails)}
             >
               <Stack>
                 <Typography
