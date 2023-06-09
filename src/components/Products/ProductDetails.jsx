@@ -50,7 +50,9 @@ function ProductDetails() {
       subPrice: +product.price,
     };
 
-    let productToFind = cart.products.filter((elem) => elem.id === product.id);
+    let productToFind = cart.products.filter(
+      (elem) => elem.item.id === product.id
+    );
 
     if (productToFind.length == 0) {
       cart.products.push(newProduct);
