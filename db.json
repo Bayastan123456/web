@@ -33,25 +33,22 @@
       "id": 2
     },
     {
-      "title": "Iran",
-      "price": "26.99",
-      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/iran-travel-guide_400x.jpg?v=1667638038",
-      "descr": "Welcome to what could be the friendliest country on earth. Iran is the jewel in Islam’s crown, combining glorious architecture with a warm-hearted welcome. Lonely Planet will get you to the heart of Iran, with amazing travel experiences and the best planning advice.",
-      "id": 16
-    },
-    {
-      "title": "Kenya",
-      "price": "27.99",
-      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/kenya-travel-guide_400x.jpg?v=1667728999",
-      "descr": "Vast savannahs peppered with immense herds of wildlife. Snow-capped equatorial mountains. Traditional peoples who bring soul and colour to the earth. Welcome to Kenya. Lonely Planet will get you to the heart of Kenya, with amazing travel experiences and the best planning advice.",
-      "id": 17
+      "title": "Coastal California",
+      "price": "14.99",
+      "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/coastal-california-travel-guide_400x.jpg?v=1667638354",
+      "descr": "is your passport to the most relevant, up-to-date advice on what tosee and skip, and what hidden",
+      "id": 4
     },
     {
       "title": "Ethiopia & Djibouti",
-      "price": "20.99",
+      "price": "12.99",
       "image": "https://cdn.shopify.com/s/files/1/0650/8521/0875/products/ethiopia-djibouti-travel-guide_400x.jpg?v=1667667711",
+<<<<<<< HEAD
       "descr": "is your passport to the most relevant, up-to-date advice on what tosee and skip, and what hidden",
 >>>>>>> 79a59dd8a65e33b614626044bee031ec919bb272
+=======
+      "descr": "This title is out of stock in the Americas regions. The expected in stock date is the end of June.",
+>>>>>>> 912cf8e3f903ea820685f3aa7644aef8998a4e71
       "id": 5
     },
     {
