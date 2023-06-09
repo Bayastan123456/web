@@ -3,12 +3,12 @@ import "firebase/compat/auth";
 import "firebase/compat/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBAqo4YMBsLp6B2iWSZzg2yZv3JC83HY8s",
-  authDomain: "auth-javassecret.firebaseapp.com",
-  projectId: "auth-javassecret",
-  storageBucket: "auth-javassecret.appspot.com",
-  messagingSenderId: "909134646829",
-  appId: "1:909134646829:web:cd9a9f5deeec74d74b72a4",
+  apiKey: "AIzaSyB7drabj2OBthe0WTEipRci2Qurg3_MQSE",
+  authDomain: "js32-firebase.firebaseapp.com",
+  projectId: "js32-firebase",
+  storageBucket: "js32-firebase.appspot.com",
+  messagingSenderId: "115887136753",
+  appId: "1:115887136753:web:9472364f5d11eaf3f2ae50",
 };
 
 const fire = firebase.initializeApp(firebaseConfig);
