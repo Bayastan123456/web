@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setEmail, setPassword } from "../store/auth/authSlice";
 import { hanleSingup } from "../store/auth/authActions";
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Link,
+} from "@mui/material";
 
 const Register = () => {
   const { email, password, emailError, passwordError } = useSelector(
@@ -198,6 +205,15 @@ const Register = () => {
             Register
           </Button>
         </Box>
+        <Link
+          className="links"
+          sx={{ color: "black" }}
+          href="#"
+          variant="body2"
+          onClick={() => navigate("/login")}
+        >
+          {"Already have an account? Log In"}
+        </Link>
       </Container>
     </Box>
   );
