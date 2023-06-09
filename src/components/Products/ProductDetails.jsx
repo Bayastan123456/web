@@ -10,7 +10,6 @@ import {
 } from "../../store/products/productsActions";
 import ModalEdit from "../ModalEdit/ModalEdit";
 import { ADMIN } from "../../helpers/consts";
-import { useDispatch, useSelector } from "react-redux";
 
 const ColorButton = styled(Button)(() => ({
   color: "#000 !important",

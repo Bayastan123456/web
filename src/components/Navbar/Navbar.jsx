@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { ADMIN } from "../../helpers/consts";
 import { useDispatch, useSelector } from "react-redux";
-import { authListener } from "../../store/auth/authActions";
+import { authListener, handleLogout } from "../../store/auth/authActions";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { clearInputs } from "../../store/auth/authSlice";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -97,10 +99,34 @@ export default function Navbar() {
               onClick={() => navigate("/")}
             />
           </Box>
-
-          <Box sx={{ width: "20%" }}>
-            <LoginIcon color="primary" />
+          {/* start way to login and register, need imports:
+           */}
+          <Box sx={{ width: "20%", display: "flex", gap: "5px" }}>
+            {user ? (
+              <>
+                <Typography color="black">Log out</Typography>
+                <LogoutIcon
+                  color="primary"
+                  onClick={() => {
+                    dispatch(handleLogout(navigate));
+                    dispatch(clearInputs());
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <Typography color="black">Sign up</Typography>
+                <LoginIcon
+                  color="primary"
+                  onClick={() => {
+                    navigate("/register");
+                    dispatch(clearInputs());
+                  }}
+                />
+              </>
+            )}
           </Box>
+          {/* end way */}
         </Toolbar>
       </NavbarContainer>
     </Box>

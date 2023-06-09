@@ -36,7 +36,7 @@ const ModalEdit = ({ productDetails }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { productDetails } = useSelector((state) => state.products);
+  // const { productDetails } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getOneProduct(id));

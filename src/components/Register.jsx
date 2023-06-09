@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setEmail, setPassword } from "../store/auth/authSlice";
@@ -9,11 +9,17 @@ const Register = () => {
   const { email, password, emailError, passwordError } = useSelector(
     (state) => state.auth
   );
+  const [showError, setShowError] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleUser = () => {
+    if (!email.trim() || !password.trim()) {
+      setShowError(true);
+      return;
+    }
+
     const obj = {
       email,
       password,
@@ -39,15 +45,35 @@ const Register = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          height: "40vw",
-          width: "30%",
           flexDirection: "column",
           backgroundColor: "white",
           borderRadius: "10px",
           gap: "20px",
-          "@media (max-width:768px)": {
-            height: "80vh",
-            width: "40%",
+          width: "35%",
+          height: "70vh",
+          "@media (max-width: 2560px)": {
+            width: "35%",
+            height: "65vh",
+          },
+          "@media (max-width: 1000px)": {
+            width: "45%",
+            height: "70vh",
+          },
+          "@media (max-width: 600px)": {
+            width: "45%",
+            height: "70vh",
+          },
+          "@media (max-width: 500px)": {
+            width: "55%",
+            height: "70vh",
+          },
+          "@media (max-width: 400px)": {
+            width: "60%",
+            height: "70vh",
+          },
+          "@media (max-width: 320px)": {
+            width: "70%",
+            height: "70vh",
           },
         }}
       >
@@ -58,10 +84,6 @@ const Register = () => {
             flexDirection: "column",
             alignItems: "center",
             gap: "20px",
-            marginBottom: "20px",
-            "@media (max-width:768px)": {
-              marginBottom: "1px",
-            },
           }}
         >
           <img
@@ -75,6 +97,10 @@ const Register = () => {
             sx={{
               fontWeight: "bold",
               fontSize: "25px",
+              textAlign: "center",
+              "@media (max-width: 910px)": {
+                fontSize: "20px",
+              },
             }}
           >
             Join Lonely Planet
@@ -144,6 +170,13 @@ const Register = () => {
               {passwordError}
             </Typography>
           )}
+          {showError ? (
+            <Typography variant="h6" sx={{ color: "red" }}>
+              Заполните все поля
+            </Typography>
+          ) : (
+            <></>
+          )}
         </Box>
         <Box
           sx={{
@@ -160,9 +193,6 @@ const Register = () => {
             sx={{
               width: "80%",
               height: "50px",
-              "@media (max-width:768px)": {
-                width: "40%",
-              },
             }}
           >
             Register
