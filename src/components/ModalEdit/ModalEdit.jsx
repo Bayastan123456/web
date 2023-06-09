@@ -7,12 +7,12 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
 import {
   editProduct,
   getOneProduct,
 } from "../../store/products/productsActions";
+import { useNavigate, useParams } from "react-router";
+import { useDispatch } from "react-redux";
 const style = {
   position: "absolute",
   height: "500px",
@@ -27,7 +27,6 @@ const style = {
 };
 
 const ModalEdit = ({ productDetails }) => {
-  console.log(productDetails);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -47,6 +46,17 @@ const ModalEdit = ({ productDetails }) => {
   const [image, setImage] = useState(productDetails.image);
   const [descr, setDescr] = useState(productDetails.descr);
 
+  useEffect(() => {
+    dispatch(getOneProduct(id));
+  }, [id]);
+
+  useEffect(() => {
+    setTitle(productDetails.title);
+    setPrice(productDetails.price);
+    setImage(productDetails.image);
+    setDescr(productDetails.descr);
+  }, [productDetails]);
+
   const handleEdit = () => {
     if (!title.trim() || !price.trim() || !image.trim() || !descr.trim()) {
       alert("Заполните поля!");
@@ -57,7 +67,7 @@ const ModalEdit = ({ productDetails }) => {
       price,
       image,
       descr,
-      id,
+      id: productDetails.id,
     };
     dispatch(editProduct(editedProduct));
     setTitle("");
@@ -130,9 +140,9 @@ const ModalEdit = ({ productDetails }) => {
               onChange={(e) => setDescr(e.target.value)}
             />
             <Button
+              onClick={handleEdit}
               sx={{ width: "95%", height: "50px" }}
               variant="contained"
-              onClick={handleEdit}
             >
               Save changes
             </Button>

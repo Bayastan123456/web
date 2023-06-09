@@ -22,6 +22,7 @@ const MainRoutes = () => {
   ];
 
   const PRIVATE_ROUTES = [{ link: "/admin", element: <AdminPage />, id: 1 }];
+
   return (
     <>
       <Routes>

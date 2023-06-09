@@ -9,7 +9,13 @@ import Checkbox from "@mui/material/Checkbox";
 
 export default function ProductsAccardion() {
   return (
-    <div style={{ maxWidth: "30vw" }}>
+    <div
+      style={{
+        maxWidth: "30vw",
+        position: "sticky",
+        top: "4em",
+      }}
+    >
       <Typography
         variant="h5"
         sx={{ marginLeft: "20%", color: "blue", fontWeight: "800" }}
@@ -167,7 +173,6 @@ export default function ProductsAccardion() {
             label="Antarctica(1)"
             sx={{ display: "block" }}
           />
-          Aidar, [06.06.2023 18:04]
           <FormControlLabel
             control={<Checkbox default />}
             label="Asia(12)"
