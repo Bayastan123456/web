@@ -40,7 +40,12 @@ function ProductDetails() {
     <Stack
       direction="row"
       spacing={15}
-      sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+      sx={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        mt: "20vh",
+      }}
     >
       <CardMedia
         sx={{
@@ -50,7 +55,11 @@ function ProductDetails() {
           mr: "10vw",
         }}
       >
-        <img src={productDetails?.image} alt="img" />
+        <img
+          style={{ maxHeight: "65vh" }}
+          src={productDetails?.image}
+          alt="img"
+        />
       </CardMedia>
 
       <div style={{ width: "520px" }}>

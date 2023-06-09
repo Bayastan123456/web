@@ -22,7 +22,7 @@ const ProductsCard = ({ item }) => {
       >
         <CardActionArea onClick={() => navigate("/details/" + item.id)}>
           <CardMedia
-            sx={{ marginTop: "10px" }}
+            sx={{ marginTop: "10px", maxHeight: "45vh" }}
             component="img"
             maxheight="100%"
             image={item.image}
