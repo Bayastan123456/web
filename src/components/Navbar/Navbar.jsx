@@ -25,7 +25,9 @@ export default function Navbar() {
     right: false,
   });
 
-  const [showPaymentForm, setShowPaymentForm] = React.useState(false);
+  const qwer = useDispatch();
+
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
 
   const openPaymentForm = () => {
     setShowPaymentForm(true);
