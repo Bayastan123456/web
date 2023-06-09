@@ -27,6 +27,7 @@ import {
 import { useNavigate } from "react-router";
 import ProductsList from "../components/Products/ProductsList";
 import { Container, Stack } from "@mui/system";
+import ProductDetails from "../components/Products/ProductDetails";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -323,7 +324,7 @@ const HomePage = () => {
           </Box>
         </Box>
       </Box>
-
+      <ProductDetails />
       <Box sx={{ mb: "16vh", mt: "15vh" }}>
         <Typography variant="h3" textAlign="center" fontWeight="bold">
           Browse Our Best Collections

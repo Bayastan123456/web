@@ -14,7 +14,7 @@ import Drawer from "@mui/material/Drawer";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CloseIcon from "@mui/icons-material/LocalGroceryStore";
-import { Button } from "@mui/base";
+import { Button } from "@mui/material";
 import { Divider } from "@mui/material";
 
 export default function Navbar() {
@@ -364,7 +364,7 @@ export default function Navbar() {
           <Box>
             {["right"].map((anchor) => (
               <React.Fragment key={anchor}>
-                <Button onClick={toggleDrawer(anchor, true)}>
+                <Button onClick={toggleDrawer(anchor, true)} variant="text">
                   <LocalGroceryStoreIcon />
                 </Button>
                 <Drawer

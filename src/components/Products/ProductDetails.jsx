@@ -211,6 +211,7 @@ function ProductDetails() {
                 variant="outlined"
                 sx={{
                   backgroundColor: "#0057D9",
+                  border: "none !important",
                   "&:hover": {
                     backgroundColor: "#0057D9 !important",
                   },
@@ -222,6 +223,8 @@ function ProductDetails() {
                 variant="outlined"
                 sx={{
                   backgroundColor: " rgba(98, 60, 150, 0.932)",
+                  border: "none !important",
+                  height: "44px",
 
                   "&:hover": {
                     backgroundColor: "rgba(98, 60, 150, 0.932) !important",
@@ -250,7 +253,10 @@ function ProductDetails() {
             <ColorButton
               variant="outlined"
               sx={{
+                border: "none !important",
                 backgroundColor: "#0057D9",
+                height: "44px",
+
                 "&:hover": {
                   backgroundColor: "#0057D9 !important",
                 },
