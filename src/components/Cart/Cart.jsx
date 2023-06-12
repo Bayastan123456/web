@@ -5,6 +5,8 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CloseIcon from "@mui/icons-material/LocalGroceryStore";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../store/cart/cartSlice";
+import { motion } from "framer-motion";
+import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
 
 const Cart = ({
   anchor,
@@ -29,22 +31,43 @@ const Cart = ({
     dispatch(getCart(cart));
   }, []);
 
+  const firstSm = {
+    sx: { backgroundColor: "red" },
+  };
+
   return (
     <Box
-      sx={{ width: 500 }}
+      sx={{
+        width: {
+          xs: 300,
+          sm: 400,
+          md: 450,
+          lg: 490,
+          xl: 600,
+        },
+        // https://img.freepik.com/free-vector/blue-white-low-poly-triangle-shapes-background_1035-19007.jpg?w=1380&t=st=1686394278~exp=1686394878~hmac=007717e1d31afbe9c903cde923a36d3c311e2336e5927c423497cf4f4c2f23c9
+        backgroundImage:
+          "url(https://img.freepik.com/premium-photo/clouds-with-blue-sky_149088-1447.jpg)",
+
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
       role="dialog"
       onClick={(event) => {
         event.stopPropagation();
       }}
       onKeyDown={toggleDrawer(anchor, true)}
     >
-      <Box sx={{ display: "flex", marginLeft: "40px", marginTop: "10px" }}>
+      <Box
+        sx={{ display: "flex", marginLeft: "40px", marginTop: "10px" }}
+        // md={{ width: "20%" }}
+      >
         <Box>
           <Typography>
             <LocalGroceryStoreIcon />
           </Typography>
         </Box>
-        <Box sx={{ fontSize: "large", marginLeft: "20px" }}>2 Items</Box>
+        <Box sx={{ fontSize: "large", marginLeft: "20px" }}>1 Items</Box>
       </Box>
       <Box
         sx={{
@@ -56,7 +79,19 @@ const Cart = ({
           position: "relative",
         }}
       >
-        <h3>You are eligible for free shipping!</h3>
+        <motion.h2
+          initial={{
+            x: -1000,
+          }}
+          animate={{
+            x: 0,
+          }}
+          transition={{
+            duration: 2.5,
+          }}
+        >
+          You are eligible for free shipping!
+        </motion.h2>
 
         <Box
           sx={{
@@ -70,7 +105,7 @@ const Cart = ({
             borderRadius: "5px",
           }}
         ></Box>
-        <CloseIcon
+        <CloseTwoToneIcon
           sx={{
             position: "absolute",
             top: "5px",
@@ -115,12 +150,15 @@ const Cart = ({
             >
               <Box sx={{ width: "25%" }}>
                 {" "}
+                <motion.img
                 <img
                   style={{
                     width: "100%",
                   }}
                   src={elem.item.image}
                   alt=""
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 />
               </Box>
 
@@ -135,6 +173,7 @@ const Cart = ({
                 </Typography>
 
                 <Box
+                  whileTap={{ scale: 0.8 }}
                   sx={{
                     border: "2px black solid",
                     width: "80px",
@@ -183,6 +222,14 @@ const Cart = ({
                 </Box>
               </Box>
               <Box>
+                <Typography
+                  sx={{
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  ${elem.item.price}
+                </Typography>
                 <Typography>${elem.item.price}</Typography>
               </Box>
             </Box>
@@ -203,7 +250,17 @@ const Cart = ({
           </Button>
         ) : (
           <Button
-            sx={{ width: "90%", height: "40px", borderRadius: "20px" }}
+            sx={{
+              width: {
+                xs: "80%",
+                sm: "83%",
+                md: "86%",
+                lg: "88%",
+                xl: "90%",
+              },
+              height: "40px",
+              borderRadius: "20px",
+            }}
             variant="contained"
             disableElevation
             onClick={openPaymentForm}
