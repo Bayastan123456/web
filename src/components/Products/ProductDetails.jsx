@@ -3,7 +3,7 @@ import Star from "@mui/icons-material/Star";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   deleteProduct,
   getOneProduct,
@@ -28,6 +28,7 @@ function ProductDetails() {
   const navigate = useNavigate();
   const { productDetails } = useSelector((state) => state.products);
   const { user } = useSelector((state) => state.auth);
+  const [checkProduct, setCheckProduct] = useState(false);
 
   useEffect(() => {
     dispatch(getOneProduct(id));
@@ -62,7 +63,16 @@ function ProductDetails() {
     cart.totalPrice = calcTotalPrice(cart.products);
     localStorage.setItem("cart", JSON.stringify(cart));
 
+    setCheckProduct((prev) => !prev);
     dispatch(getCart(cart.products));
+  };
+
+  const checkProductInCart = () => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    const check = cart.products.find(
+      (elem) => elem.item.id === productDetails.id
+    );
+    return check;
   };
 
   return (
@@ -278,6 +288,32 @@ function ProductDetails() {
                 </Stack>
               </ColorButton>
             </>
+          ) : checkProductInCart() ? (
+            <ColorButton
+              variant="outlined"
+              sx={{
+                border: "none !important",
+                backgroundColor: "#0057D9",
+                height: "44px",
+                "&:hover": {
+                  backgroundColor: "#0057D9 !important",
+                },
+              }}
+              onClick={() => addProductToCart(productDetails)}
+            >
+              <Stack>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    color: "white",
+                  }}
+                >
+                  Remove from cart
+                </Typography>
+              </Stack>
+            </ColorButton>
           ) : (
             <ColorButton
               variant="outlined"

@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CloseIcon from "@mui/icons-material/LocalGroceryStore";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../store/cart/cartSlice";
 import { motion } from "framer-motion";
 import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
+import { calcSubPrice, calcTotalPrice } from "../../helpers/functions";
 
 const Cart = ({
   anchor,
@@ -30,6 +31,29 @@ const Cart = ({
     }
     dispatch(getCart(cart));
   }, []);
+
+  const changeProductCount = (count, id) => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+
+    cart.products = cart.products.map((product) => {
+      if (product.item.id === id) {
+        product.count = count;
+        product.subPrice = calcSubPrice(product);
+      }
+      return product;
+    });
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    dispatch(getCart(cart));
+  };
+
+  const deleteCartProduct = (id) => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    cart.products = cart.products.filter((elem) => elem.item.id !== id);
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    dispatch(getCart(cart));
+  };
 
   const firstSm = {
     sx: { backgroundColor: "red" },
@@ -138,101 +162,121 @@ const Cart = ({
         </Box>
       ) : (
         <>
-          {products?.map((elem) => (
-            <Box
-              sx={{
-                justifyContent: "space-around",
-                display: "flex",
-                marginTop: "2%",
-                marginLeft: "4%",
-                marginRight: "10%",
-              }}
-            >
-              <Box sx={{ width: "25%" }}>
-                {" "}
-                <motion.img
-                  style={{
-                    width: "100%",
-                  }}
-                  src={elem.item.image}
-                  alt=""
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                />
-              </Box>
-
+          {products?.map((elem) => {
+            console.log(elem.count);
+            return (
               <Box
-                sx={{ width: "40%", display: "flex", flexDirection: "column" }}
+                sx={{
+                  justifyContent: "space-around",
+                  display: "flex",
+                  marginTop: "2%",
+                  marginLeft: "4%",
+                  marginRight: "10%",
+                }}
               >
-                <Typography component="span" sx={{ fontWeight: "bold" }}>
-                  {elem.item.title}
-                </Typography>
-                <Typography component="span" sx={{}}>
-                  Book
-                </Typography>
+                <Box sx={{ width: "25%" }}>
+                  {" "}
+                  <motion.img
+                    style={{
+                      width: "100%",
+                    }}
+                    src={elem.item.image}
+                    alt=""
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  />
+                </Box>
 
                 <Box
-                  whileTap={{ scale: 0.8 }}
                   sx={{
-                    border: "2px black solid",
-                    width: "80px",
-                    height: "30px",
+                    width: "40%",
                     display: "flex",
-                    borderRadius: "50px",
-                    marginLeft: "5%",
-                    overflow: "hidden",
+                    flexDirection: "column",
                   }}
                 >
-                  <Typography
-                    component="button"
+                  <Typography component="span" sx={{ fontWeight: "bold" }}>
+                    {elem.item.title}
+                  </Typography>
+                  <Typography component="span" sx={{}}>
+                    Book
+                  </Typography>
+
+                  <Box
+                    whileTap={{ scale: 0.8 }}
                     sx={{
-                      height: "100%",
-                      width: "30%",
-                      background: "white",
-                      border: "none",
-                      fontSize: "20px",
-                      color: "black",
+                      border: "2px black solid",
+                      width: "80px",
+                      height: "30px",
+                      display: "flex",
+                      borderRadius: "50px",
+                      marginLeft: "5%",
+                      overflow: "hidden",
                     }}
                   >
-                    -
-                  </Typography>
+                    <Typography
+                      component="button"
+                      sx={{
+                        height: "100%",
+                        width: "30%",
+                        background: "white",
+                        border: "none",
+                        fontSize: "20px",
+                        color: "black",
+                      }}
+                      onClick={() => {
+                        if (elem.count === 1) {
+                          deleteCartProduct(elem.item.id);
+                        } else {
+                          changeProductCount(elem.count - 1, elem.item.id);
+                        }
+                      }}
+                    >
+                      -
+                    </Typography>
+                    <Typography
+                      component="input"
+                      sx={{
+                        width: "30px",
+                        textAlign: "center",
+                        border: "none",
+                      }}
+                      value={elem.count}
+                    ></Typography>
+                    <Typography
+                      component="button"
+                      sx={{
+                        height: "100%",
+                        width: "30%",
+                        background: "white",
+                        border: "none",
+                        fontSize: "20px",
+                        color: "black ",
+                      }}
+                      onClick={() => {
+                        changeProductCount(elem.count + 1, elem.item.id);
+                      }}
+                    >
+                      +
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box>
                   <Typography
-                    component="input"
-                    placeholder="1"
                     sx={{
-                      width: "30px",
-                      textAlign: "center",
-                      border: "none",
-                    }}
-                  ></Typography>
-                  <Typography
-                    component="button"
-                    sx={{
-                      height: "100%",
-                      width: "30%",
-                      background: "white",
-                      border: "none",
                       fontSize: "20px",
-                      color: "black ",
+                      fontWeight: "bold",
                     }}
                   >
-                    +
+                    ${elem.item.price}
                   </Typography>
+                  <Typography>${elem.subPrice}</Typography>
+                  <Button onClick={() => deleteCartProduct(elem.item.id)}>
+                    Delete product
+                  </Button>
                 </Box>
               </Box>
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  ${elem.item.price}
-                </Typography>
-                <Typography>${elem.item.price}</Typography>
-              </Box>
-            </Box>
-          ))}
+            );
+          })}
         </>
       )}
 
