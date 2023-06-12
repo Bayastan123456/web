@@ -1,5 +1,6 @@
 import { Box, Button, Divider, Typography } from "@mui/material";
 import React, { useEffect } from "react";
+
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CloseIcon from "@mui/icons-material/LocalGroceryStore";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +16,7 @@ const Cart = ({
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.cart.cart);
   console.log(products);
+
   useEffect(() => {
     let cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -26,8 +28,8 @@ const Cart = ({
       cart = { products: [], totalPrice: 0 };
     }
     dispatch(getCart(cart));
-    console.log(cart);
   }, []);
+
   return (
     <Box
       sx={{ width: 500 }}
@@ -127,7 +129,7 @@ const Cart = ({
                 sx={{ width: "40%", display: "flex", flexDirection: "column" }}
               >
                 <Typography component="span" sx={{ fontWeight: "bold" }}>
-                  Experience {elem.item.title}
+                  {elem.item.title}
                 </Typography>
                 <Typography component="span" sx={{}}>
                   Book

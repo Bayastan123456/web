@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import "swiper/css/navigation";
@@ -29,6 +29,7 @@ import ProductsList from "../components/Products/ProductsList";
 import { Container, Stack } from "@mui/system";
 import ProductDetails from "../components/Products/ProductDetails";
 import ImageAnimation from "../components/Products/ProductSlide";
+import { motion, useScroll } from "framer-motion";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div style={{ overflow: "hidden" }}>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={2}
@@ -51,37 +52,65 @@ const HomePage = () => {
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        <SwiperSlide>
+        <SwiperSlide sx={{ width: "100vw", height: "100vh" }}>
           <Box
             sx={{
               width: "100vw",
               height: "100vh",
               backgroundImage:
-                "url(https://cdn.shopify.com/s/files/1/0650/8521/0875/files/2022-03-11_LONELY_PLANET_PORTUGAL_019A1485.jpg?v=1678123838&width=1535)",
+                "url(https://cdn.shopify.com/s/files/1/0650/8521/0875/files/2022-03-11_LONELY_PLANET_PORTUGAL_019A1485.jpg?v=1678123838&width=1550)",
               backgroundRepeat: "no-repeat",
               color: "#fff",
               display: "flex",
+              backgroundSize: "cover",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
             <Box sx={{ width: "60%" }}>
-              <Typography sx={{ fontSize: "50px", fontWeight: "bold" }}>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xl: 45,
+                    lg: 40,
+                    md: 35,
+                    cm: 30,
+                    xs: 15,
+                  },
+                  fontWeight: "bold",
+                }}
+              >
                 Plan The Trip Of A Lifetime With <br /> Destination Insights
                 From Local
                 <br /> Writers
               </Typography>
-              <Typography sx={{ fontSize: "40px", marginTop: "50px" }}>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xl: 20,
+                    lg: 19,
+                    md: 17,
+                    cm: 16,
+                    xs: 15,
+                  },
+                  marginTop: "50px",
+                }}
+              >
                 Instant delivery on ebooks
               </Typography>
               <Button
                 variant="contained"
                 onClick={() => navigate("/products")}
                 sx={{
-                  marginTop: "50px",
+                  marginTop: "5vw",
                   borderRadius: "50px",
                   width: "20vw",
                   padding: "10px 0px",
+                  fontSize: {
+                    md: 15,
+                    cm: 10,
+                    xs: 5,
+                  },
                 }}
               >
                 Shop Digital Guides
@@ -89,27 +118,56 @@ const HomePage = () => {
             </Box>
           </Box>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide
+          sx={{
+            width: "100vw",
+            // height: {
+            //   md: "50vh",
+            // },
+          }}
+        >
           <Box
             sx={{
               height: "100vh",
               width: "100vw",
               backgroundImage:
-                "url(https://cdn.shopify.com/s/files/1/0650/8521/0875/files/Japan_Bundle_Mobile_Promo_Banner_2160_x_1080_px_231d3982-9a30-4eac-a4a5-c52c0859d8f0.png?v=1682908123&width=1550)",
-              backgroundSize: "100%",
-              backgroundColor: "rgba(0,0,0,0.5)",
+                "url(https://cdn.shopify.com/s/files/1/0650/8521/0875/files/Japan_Bundle_Mobile_Promo_Banner_2160_x_1080_px_231d3982-9a30-4eac-a4a5-c52c0859d8f0.png?v=1682908123&MaxWidth=2460)",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+
               color: "#fff",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              opacity: "0.9",
             }}
           >
             <Box sx={{ width: "60%", textAlign: "center" }}>
-              <Typography sx={{ fontSize: "50px", fontWeight: "bold" }}>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xl: 45,
+                    lg: 40,
+                    md: 35,
+                    cm: 30,
+                    xs: 15,
+                  },
+                  fontWeight: "bold",
+                }}
+              >
                 Save 35% with Our Exclusive Italy <br /> eBook Bundle From Local
               </Typography>
-              <Typography sx={{ fontSize: "20px", marginTop: "50px" }}>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xl: 20,
+                    lg: 18,
+                    md: 17,
+                    cm: 15,
+                    xs: 14,
+                  },
+                  marginTop: "50px",
+                }}
+              >
                 Explore Italy, Rome, and Milan with Our Exclusive eBook Bundle
               </Typography>
               <Button
@@ -120,6 +178,11 @@ const HomePage = () => {
                   marginTop: "50px",
                   borderRadius: "50px",
                   width: "20vw",
+                  fontSize: {
+                    md: 15,
+                    cm: 10,
+                    xs: 5,
+                  },
 
                   ":hover": { backgroundColor: "#7483e0" },
                 }}
@@ -129,14 +192,16 @@ const HomePage = () => {
             </Box>
           </Box>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide sx={{ width: "100vw", height: "100vh" }}>
           <Box
             sx={{
               height: "100vh",
               width: "100vw",
               backgroundImage:
-                "url(https://cdn.shopify.com/s/files/1/0650/8521/0875/files/Italy_Bundle_Promo_Banner_2160_x_1080_px_a4b5c5cb-c724-454b-ae5a-c9c81de6c17a.png?v=1682911732&width=800)",
-              backgroundSize: "100%",
+                "url(https://cdn.shopify.com/s/files/1/0650/8521/0875/files/Italy_Bundle_Promo_Banner_2160_x_1080_px_a4b5c5cb-c724-454b-ae5a-c9c81de6c17a.png?v=1682911732&width=1550)",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+
               color: "#fff",
               display: "flex",
               justifyContent: "center",
@@ -144,10 +209,32 @@ const HomePage = () => {
             }}
           >
             <Box sx={{ width: "60%", textAlign: "center" }}>
-              <Typography sx={{ fontSize: "50px", fontWeight: "bold" }}>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xl: 45,
+                    lg: 40,
+                    md: 35,
+                    cm: 30,
+                    xs: 15,
+                  },
+                  fontWeight: "bold",
+                }}
+              >
                 Your Ultimate Guide to Japan - Now <br /> 40% Off
               </Typography>
-              <Typography sx={{ fontSize: "20px", marginTop: "50px" }}>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xl: 20,
+                    lg: 19,
+                    md: 18,
+                    cm: 17,
+                    xs: 15,
+                  },
+                  marginTop: "50px",
+                }}
+              >
                 Get the exclusive eBook Bundle and Save 40%!
               </Typography>
               <Button
@@ -158,6 +245,11 @@ const HomePage = () => {
                   marginTop: "50px",
                   borderRadius: "50px",
                   width: "20vw",
+                  fontSize: {
+                    md: 15,
+                    cm: 10,
+                    xs: 5,
+                  },
                   ":hover": { backgroundColor: "#7483e0" },
                 }}
               >
@@ -229,7 +321,10 @@ const HomePage = () => {
           sx={{
             display: "flex",
             justifyContent: "space-around",
+            overflowX: "scroll",
+            // flexWrap: "wrap",
             marginTop: "50px",
+            gap: "50px",
           }}
         >
           <img
@@ -247,11 +342,16 @@ const HomePage = () => {
         </Box>
       </Box>
 
-      <Box sx={{ padding: "auto", margin: "auto" }}>
+      <Box sx={{ padding: "auto", margin: "auto", width: "100vw" }}>
         <Typography variant="h3" fontWeight={"600"} textAlign={"center"}>
           Which guidebook is right for me?
         </Typography>
-        <Container sx={{ width: "150vw", marginY: "6rem" }}>
+        <Container
+          sx={{
+            width: "100vw",
+            marginY: "6rem",
+          }}
+        >
           <Box width={"100%"} display={"flex"}>
             <Card
               sx={{
@@ -633,7 +733,7 @@ const HomePage = () => {
           </Box>
         </Container>
         <Container
-          sx={{ backgroundColor: "#cddff8", width: "150vw", padding: "5%" }}
+          sx={{ backgroundColor: "#cddff8", width: "100vw", padding: "5%" }}
         >
           <Box
             sx={{
