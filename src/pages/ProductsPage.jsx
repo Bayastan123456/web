@@ -5,6 +5,7 @@ import ProductsList from "../components/Products/ProductsList";
 import { Link } from "react-router-dom";
 import { Pagination, Typography } from "@mui/material";
 import SelectSmall from "../components/SortBy";
+import ProductSearch from "../components/Products/ProductSearch";
 
 const ProductsPage = () => {
   return (
@@ -37,6 +38,7 @@ const ProductsPage = () => {
       <Box
         sx={{ display: "flex", justifyContent: "end", mr: "3vw", mb: "2vh" }}
       >
+        <ProductSearch />
         <SelectSmall />
       </Box>
       <Box sx={{ width: "100%", display: "flex", flexDirection: "row" }}>

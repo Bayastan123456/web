@@ -2,6 +2,7 @@ import { createAction } from "@reduxjs/toolkit";
 
 export const createCart = createAction("@cart/createCart", () => {
   let cart = JSON.parse(localStorage.getItem("cart"));
+
   if (!cart) {
     localStorage.setItem(
       "cart",
