@@ -44,12 +44,52 @@ const Admin = () => {
           flexDirection: "column",
           alignItems: "center",
           gap: "15px",
-          width: "100%",
+          width: "10%",
+          "@media (max-width: 2560px)": {
+            width: "100%",
+            height: "70vh",
+          },
+          "@media (max-width: 1000px)": {
+            width: "95%",
+            height: "70vh",
+          },
+          "@media (max-width: 600px)": {
+            width: "90%",
+            height: "70vh",
+          },
+          "@media h2 (max-width: 500px)": {
+            width: "70%",
+            height: "70vh",
+            fontSize: "14px",
+          },
+          "@media (max-width: 400px)": {
+            width: "65%",
+            height: "70vh",
+            ml: "18%",
+          },
+          "@media (max-width: 320px)": {
+            width: "60%",
+            height: "70vh",
+          },
         }}
       >
         <Typography
           variant="h2"
-          sx={{ fontWeight: "600", mb: "30px", fontFamily: "ubuntu" }}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            fontWeight: "600",
+            mb: "30px",
+            fontFamily: "ubuntu",
+            "@media (max-width: 425px)": {
+              fontSize: "2.50rem",
+            },
+            "@media (max-width: 375px)": {
+              fontSize: "1.75rem",
+            },
+          }}
         >
           Add product
         </Typography>
@@ -57,29 +97,100 @@ const Admin = () => {
           label="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          sx={{ width: "35%" }}
+          sx={{
+            mb: 2,
+            width: "35%",
+            "@media (max-width:768px)": {
+              width: "50%",
+              mb: 1,
+            },
+            "@media (max-width:400px)": {
+              width: "80%",
+              mb: 1,
+            },
+            "@media (max-width:375px)": {
+              width: "80%",
+              mb: 1,
+            },
+          }}
         />
         <TextField
           label="Price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          sx={{ width: "35%" }}
+          sx={{
+            width: "35%",
+            "@media (max-width:768px)": {
+              width: "50%",
+              mb: 1,
+              "@media (max-width:400px)": {
+                width: "80%",
+                mb: 1,
+              },
+              "@media (max-width:375px)": {
+                width: "80%",
+                mb: 1,
+              },
+            },
+          }}
         />
         <TextField
           label="Image"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          sx={{ width: "35%" }}
+          sx={{
+            width: "35%",
+            "@media (max-width:768px)": {
+              width: "50%",
+              mb: 1,
+              "@media (max-width:400px)": {
+                width: "80%",
+                mb: 1,
+              },
+              "@media (max-width:375px)": {
+                width: "80%",
+                mb: 1,
+              },
+            },
+          }}
         />
         <TextField
           label="Description"
           value={descr}
           onChange={(e) => setDescr(e.target.value)}
-          sx={{ width: "35%" }}
+          sx={{
+            width: "35%",
+            "@media (max-width:768px)": {
+              width: "50%",
+              mb: 1,
+              "@media (max-width:400px)": {
+                width: "80%",
+                mb: 1,
+              },
+              "@media (max-width:375px)": {
+                width: "80%",
+                mb: 1,
+              },
+            },
+          }}
         />
         <Button
           variant="contained"
-          sx={{ width: "35%", height: "50px" }}
+          sx={{
+            width: "35%",
+            "@media (max-width:768px)": {
+              width: "50%",
+              mb: 1,
+              "@media (max-width:400px)": {
+                width: "80%",
+                mb: 1,
+              },
+              "@media (max-width:375px)": {
+                width: "80%",
+                mb: 1,
+              },
+            },
+          }}
           onClick={handleProduct}
         >
           Add

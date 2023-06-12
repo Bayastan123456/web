@@ -21,7 +21,6 @@ const Cart = ({
 
   useEffect(() => {
     let cart = JSON.parse(localStorage.getItem("cart"));
-
     if (!cart) {
       localStorage.setItem(
         "cart",
@@ -152,6 +151,7 @@ const Cart = ({
               <Box sx={{ width: "25%" }}>
                 {" "}
                 <motion.img
+                <img
                   style={{
                     width: "100%",
                   }}
@@ -230,6 +230,7 @@ const Cart = ({
                 >
                   ${elem.item.price}
                 </Typography>
+                <Typography>${elem.item.price}</Typography>
               </Box>
             </Box>
           ))}
