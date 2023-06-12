@@ -16,8 +16,8 @@ const Cart = ({
   showPaymentForm,
 }) => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.cart.cart);
-  console.log(products);
+  const { products, totalPrice } = useSelector((state) => state.cart.cart);
+  console.log(products, totalPrice);
 
   useEffect(() => {
     let cart = JSON.parse(localStorage.getItem("cart"));
@@ -151,7 +151,6 @@ const Cart = ({
               <Box sx={{ width: "25%" }}>
                 {" "}
                 <motion.img
-                <img
                   style={{
                     width: "100%",
                   }}
@@ -265,7 +264,7 @@ const Cart = ({
             disableElevation
             onClick={openPaymentForm}
           >
-            <h3>Checkout $24.99</h3>
+            <h3>Checkout ${Math.floor(totalPrice)}</h3>
           </Button>
         )}
       </Box>
