@@ -1,13 +1,38 @@
 import { Box, display } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import ProductsAccardion from "../components/Products/ProductsAccardion";
 import ProductsList from "../components/Products/ProductsList";
 import { Link } from "react-router-dom";
 import { Pagination, Typography } from "@mui/material";
 import SelectSmall from "../components/SortBy";
 import ProductSearch from "../components/Products/ProductSearch";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProducts } from "../store/products/productsActions";
 
 const ProductsPage = () => {
+  const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
+  const [page, setPage] = useState(1);
+
+  const itemsPerPage = 3;
+  const count = Math.ceil(products.length / itemsPerPage);
+
+  function currentData() {
+    const begin = (page - 1) * itemsPerPage;
+    const end = begin + itemsPerPage;
+    return products.slice(begin, end);
+  }
+
+  const handleChange = (_, p) => {
+    setPage(p);
+  };
+
   return (
     <Box sx={{ margin: 0, padding: 0, boxSizing: "border-box" }}>
       <Box sx={{ marginTop: "15vh", marginLeft: "3vw" }}>
@@ -47,11 +72,11 @@ const ProductsPage = () => {
         </Box>
 
         <Box sx={{ width: "75%" }}>
-          <ProductsList />
+          <ProductsList currentData={currentData} />
         </Box>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "center", mt: "10vh" }}>
-        <Pagination />
+        <Pagination count={count} page={page} onChange={handleChange} />
       </Box>
     </Box>
   );
