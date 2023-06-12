@@ -19,7 +19,6 @@ const Cart = ({
 
   useEffect(() => {
     let cart = JSON.parse(localStorage.getItem("cart"));
-
     if (!cart) {
       localStorage.setItem(
         "cart",

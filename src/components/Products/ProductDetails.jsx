@@ -35,7 +35,6 @@ function ProductDetails() {
 
   const addProductToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem("cart"));
-
     if (!cart) {
       cart = {
         products: [],
