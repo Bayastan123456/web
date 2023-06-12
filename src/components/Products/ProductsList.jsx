@@ -4,7 +4,7 @@ import { Box } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../store/products/productsActions";
 
-const ProductsList = () => {
+const ProductsList = ({ currentData }) => {
   const { products } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
@@ -14,9 +14,13 @@ const ProductsList = () => {
   return (
     <>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "5vw" }}>
-        {products.map((item) => (
-          <ProductsCard item={item} key={item.id} />
-        ))}
+        {products ? (
+          currentData().map((item) => (
+            <ProductsCard item={item} key={item.id} />
+          ))
+        ) : (
+          <></>
+        )}
       </Box>
     </>
   );
