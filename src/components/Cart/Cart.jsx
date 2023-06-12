@@ -151,7 +151,6 @@ const Cart = ({
               <Box sx={{ width: "25%" }}>
                 {" "}
                 <motion.img
-                <img
                   style={{
                     width: "100%",
                   }}
