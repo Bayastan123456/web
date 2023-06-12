@@ -9,6 +9,8 @@ import ProductsPage from "../pages/ProductsPage";
 import { useSelector } from "react-redux";
 import { ADMIN } from "../helpers/consts";
 import ProductDetails from "../components/Products/ProductDetails";
+import ContactPage from "../pages/ContactPage";
+import AboutUs from "../components/AboutUs/AboutUs";
 
 const MainRoutes = () => {
   const { user } = useSelector((state) => state.auth);
@@ -18,7 +20,10 @@ const MainRoutes = () => {
     { link: "/register", element: <RegisterPage />, id: 3 },
     { link: "/products", element: <ProductsPage />, id: 4 },
     { link: "/details/:id", element: <ProductDetails />, id: 5 },
-    { link: "*", element: <NotFoundPage />, id: 6 },
+    { link: "/contact", element: <ContactPage />, id: 6 },
+    { link: "/aboutus", element: <AboutUs />, id: 7 },
+
+    { link: "*", element: <NotFoundPage />, id: 8 },
   ];
 
   const PRIVATE_ROUTES = [{ link: "/admin", element: <AdminPage />, id: 1 }];

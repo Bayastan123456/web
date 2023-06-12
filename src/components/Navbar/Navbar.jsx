@@ -138,6 +138,12 @@ export default function Navbar() {
             >
               Products
             </Typography>
+            <Typography
+              onClick={() => navigate("/aboutus")}
+              style={{ color: "black", cursor: "pointer" }}
+            >
+              About us
+            </Typography>
 
             {user === ADMIN && (
               <Typography
