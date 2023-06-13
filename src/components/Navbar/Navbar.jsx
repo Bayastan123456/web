@@ -12,17 +12,13 @@ import { clearInputs } from "../../store/auth/authSlice";
 import Drawer from "@mui/material/Drawer";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
-import CloseIcon from "@mui/icons-material/LocalGroceryStore";
-import { Button } from "@mui/material";
-import { Divider } from "@mui/material";
+import { Badge, Button } from "@mui/material";
 import Cart from "../Cart/Cart";
+import { getCountProductsInCart } from "../../helpers/functions";
 
 export default function Navbar() {
   // ====================================
   const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
     right: false,
   });
 
@@ -78,6 +74,14 @@ export default function Navbar() {
   useEffect(() => {
     dispatch(authListener());
   }, []);
+
+  const { cart } = useSelector((state) => state.cart);
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(getCountProductsInCart);
+  }, [cart]);
 
   return (
     <Box
@@ -172,34 +176,6 @@ export default function Navbar() {
               onClick={() => navigate("/")}
             />
           </Box>
-          {/* start way to login and register, need imports:
-           */}
-          {/* <Box sx={{ width: "20%", display: "flex", gap: "5px" }}> */}
-          {/* {user ? (
-              <>
-                <Typography color="black">Log out</Typography>
-                <LogoutIcon
-                  color="primary"
-                  onClick={() => {
-                    dispatch(handleLogout(navigate));
-                    dispatch(clearInputs());
-                  }}
-                />
-              </>
-            ) : (
-              <>
-                <Typography color="black">Sign up</Typography>
-                <LoginIcon
-                  color="primary"
-                  onClick={() => {
-                    navigate("/register");
-                    dispatch(clearInputs());
-                  }}
-                />
-              </>
-            )} */}
-          {/* </Box> */}
-
           <Box
             sx={{
               display: "flex",
@@ -208,7 +184,6 @@ export default function Navbar() {
             }}
           >
             <Box sx={{}}>
-              {/* <ShoppingCartIcon color="primary" /> */}
               {user ? (
                 <LogoutIcon
                   sx={{ marginTop: "6px" }}
@@ -234,7 +209,9 @@ export default function Navbar() {
               {["right"].map((anchor) => (
                 <React.Fragment key={anchor}>
                   <Button onClick={toggleDrawer(anchor, true)} variant="text">
-                    <LocalGroceryStoreIcon />
+                    <Badge badgeContent={count} color="primary">
+                      <LocalGroceryStoreIcon />
+                    </Badge>
                   </Button>
                   <Drawer
                     anchor={anchor}

@@ -28,7 +28,7 @@ const ProductsPage = () => {
     const end = begin + itemsPerPage;
     return products.slice(begin, end);
   }
-
+  console.log(currentData);
   const handleChange = (_, p) => {
     setPage(p);
   };

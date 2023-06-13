@@ -69,9 +69,16 @@ function ProductDetails() {
 
   const checkProductInCart = () => {
     let cart = JSON.parse(localStorage.getItem("cart"));
-    const check = cart.products.find(
-      (elem) => elem.item.id === productDetails.id
-    );
+    if (!cart) {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify({ products: [], totalPrice: 0 })
+      );
+      cart = { products: [], totalPrice: 0 };
+    }
+    const check = cart.products
+      ? cart.products?.find((elem) => elem.item.id === productDetails.id)
+      : false;
     return check;
   };
 
