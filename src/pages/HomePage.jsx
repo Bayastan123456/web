@@ -299,7 +299,7 @@ const HomePage = () => {
             </ToggleButton>
           </ToggleButtonGroup>
         </Box>
-        <ProductsList />
+        {/* <ProductsList /> */}
         <Box sx={{ display: "flex", justifyContent: "center", mt: "7vh" }}>
           <Button
             onClick={() => navigate("/products")}
