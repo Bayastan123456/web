@@ -28,7 +28,7 @@ jobs:
         # You might need to add other build steps or commands here
         # For example, if you're using React:
         # npm run build
-        # gh-pages -d build -b main
+        # gh-pages -d build -b master
 
     - name: Sleep for JSON Server to Start
       run: sleep 10
