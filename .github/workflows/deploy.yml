@@ -1,0 +1,34 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build and Deploy
+      run: |
+        npx json-server --watch db.json --port $PORT &
+
+        # You might need to add other build steps or commands here
+        # For example, if you're using React:
+        # npm run build
+        # gh-pages -d build -b main
+
+    - name: Sleep for JSON Server to Start
+      run: sleep 10
