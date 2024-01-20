@@ -1,3 +1,3 @@
-export const API = "http://localhost:8000/products";
+export const API = "https://api-web-hacaton.onrender.com/products";
 
 export const ADMIN = "admin@admin.com";
